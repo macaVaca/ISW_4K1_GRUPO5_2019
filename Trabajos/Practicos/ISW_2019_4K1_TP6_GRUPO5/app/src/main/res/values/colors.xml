@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#ff1744</color>
+    <color name="colorPrimaryDark">#c4001d</color>
+    <color name="colorAccent">#ff616f</color>
+    <color name="buttonDefaultTextColor">#ffffff</color>
+    <color name="colorTitle">#666</color>
+    <color name="colorBarIcons">#333</color>
+    <color name="bgDefault">#eee</color>
+</resources>

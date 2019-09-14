@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+        <ScrollView android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:padding="8dp"
+            android:layout_margin="8dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="23dp"
+                    android:layout_height="50dp"
+                    android:layout_width="match_parent"
+                    android:src="@mipmap/logo_full"
+                    android:layout_marginBottom="20dp">
+
+                </ImageView>
+
+                <Button
+                    android:id="@+id/buttonLocalidades"
+                    android:layout_margin="8dp"
+                    android:text="LOCALIDADES"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/background_button_default"
+                    android:textColor="@color/buttonDefaultTextColor"
+                    android:fontFamily="sans-serif-black"/>
+
+                <Button
+                    android:id="@+id/buttonProductos"
+                    android:layout_margin="8dp"
+                    android:text="PRODUCTOS"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/background_button_default"
+                    android:textColor="@color/buttonDefaultTextColor"
+                    android:fontFamily="sans-serif-black"/>
+
+                <Button
+                    android:id="@+id/buttonClientes"
+                    android:layout_margin="8dp"
+                    android:text="CLIENTES"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/background_button_default"
+                    android:textColor="@color/buttonDefaultTextColor"
+                    android:fontFamily="sans-serif-black"/>
+
+            </LinearLayout>
+
+        </ScrollView>
+</LinearLayout>
+
