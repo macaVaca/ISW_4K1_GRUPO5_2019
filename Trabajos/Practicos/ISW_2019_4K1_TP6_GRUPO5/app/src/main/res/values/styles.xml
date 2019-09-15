@@ -8,7 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:statusBarColor">@color/bgDefault</item>
-        <item name="android:background">@color/bgDefault</item>
+        <item name="android:fontFamily">@font/quicksand_light </item>
     </style>
 
     <style name="AppThemeFullScreen" parent="AppTheme">
@@ -18,5 +18,11 @@
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowContentOverlay">@null</item>
     </style>
+
+    <style name="DialogTheme" parent="@android:style/Theme.Translucent">
+        <item name="android:windowBackground">@color/transparentBlack</item>
+        <item name="android:windowIsFloating">true</item>
+    </style>
+
 
 </resources>

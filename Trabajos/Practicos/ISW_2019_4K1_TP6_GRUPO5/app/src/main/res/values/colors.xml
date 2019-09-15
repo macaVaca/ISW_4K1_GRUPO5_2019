@@ -6,5 +6,6 @@
     <color name="buttonDefaultTextColor">#ffffff</color>
     <color name="colorTitle">#666</color>
     <color name="colorBarIcons">#333</color>
-    <color name="bgDefault">#eee</color>
+    <color name="bgDefault">#fff</color>
+    <color name="transparentBlack">#66000000</color>
 </resources>
