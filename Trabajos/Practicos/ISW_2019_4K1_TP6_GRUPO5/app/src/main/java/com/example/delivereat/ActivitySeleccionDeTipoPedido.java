@@ -6,21 +6,23 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-public class ActivityNuevaCiudad extends AppCompatActivity {
+public class ActivitySeleccionDeTipoPedido extends AppCompatActivity {
 
     private android.support.v7.widget.Toolbar toolbar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_nueva_ciudad);
+        setContentView(R.layout.activity_main_user_logged);
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         if(getSupportActionBar() != null){
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            ((TextView) toolbar.findViewById(R.id.tvToolbar)).setText("LOCALIDADES");
+            getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_location);
+            ((TextView) toolbar.findViewById(R.id.tvToolbar)).setText("Nuevo Pedido");
         }
+
 
 
     }

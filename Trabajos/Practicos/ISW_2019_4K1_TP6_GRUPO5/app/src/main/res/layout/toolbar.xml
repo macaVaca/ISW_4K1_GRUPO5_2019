@@ -7,14 +7,20 @@
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize" >
+        android:layout_height="?attr/actionBarSize"
+        android:gravity="center_horizontal">
+
         <TextView
+            android:layout_weight="1"
             android:id="@+id/tvToolbar"
-            android:textSize="16sp"
-            android:textColor="@color/colorBarIcons"
+            android:textSize="18sp"
+            android:textColor="@color/colorPrimary"
+            android:text="Nuevo Pedido"
+            android:textAlignment="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif"/>
+            android:fontFamily="@font/quicksand_bold"/>
+
     </android.support.v7.widget.Toolbar>
 
 
