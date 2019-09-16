@@ -4,11 +4,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.v7.widget.Toolbar
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:gravity="center_horizontal">
+        android:gravity="center_horizontal"
+        android:background="#FFF">
 
         <TextView
             android:layout_weight="1"
@@ -21,7 +22,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/quicksand_bold"/>
 
-    </android.support.v7.widget.Toolbar>
+    </androidx.appcompat.widget.Toolbar>
 
 
 </LinearLayout>
