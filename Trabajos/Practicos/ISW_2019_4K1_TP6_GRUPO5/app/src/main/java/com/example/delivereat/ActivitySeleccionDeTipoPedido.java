@@ -7,14 +7,12 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import com.example.delivereat.util.DialogAlert;
-import com.google.android.gms.maps.model.LatLng;
 
 public class ActivitySeleccionDeTipoPedido extends AppCompatActivity {
 
@@ -23,14 +21,14 @@ public class ActivitySeleccionDeTipoPedido extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_user_logged);
+        setContentView(R.layout.activity_seleccion_pedido);
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         if(getSupportActionBar() != null){
             //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             //getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_location);
-            ((TextView) toolbar.findViewById(R.id.tvToolbar)).setText("Nuevo Pedido");
+            //((TextView) toolbar.findViewById(R.id.tvToolbar)).setText("Nuevo Pedido");
         }
 
         findViewById(R.id.card_view_loquesea).setOnClickListener(new View.OnClickListener() {
