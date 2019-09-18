@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="8dp">
+
+    <TextView
+        android:textSize="16dp"
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:drawableStart="@drawable/ic_location"
+        android:drawablePadding="8dp"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/quicksand_semibold"
+        android:gravity="center_vertical"
+        android:maxLines="1"
+        android:text="¿A dónde llevamos tu pedido?"
+        android:textColor="@color/colorTitle" />
+
+    <Spinner
+        android:id="@+id/spinnerProvincia"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_margin="8dp"
+        android:spinnerMode="dialog"
+        android:entries="@array/array_provincias"
+        android:fontFamily="@font/quicksand_regular">
+    </Spinner>
+
+    <Spinner
+        android:id="@+id/spinnerLocalidad"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_margin="8dp"
+        android:spinnerMode="dialog"
+        android:entries="@array/array_localidades_ba"
+        android:fontFamily="@font/quicksand_regular">
+    </Spinner>
+
+    <EditText
+        android:id="@+id/editTextCalle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:fontFamily="@font/quicksand_regular"
+        android:hint="Calle"></EditText>
+
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:orientation="horizontal"
+        android:layout_margin="8dp">
+
+
+        <EditText
+            android:layout_weight="1"
+            android:id="@+id/editTextNro"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/quicksand_regular"
+            android:hint="Nro"></EditText>
+
+        <EditText
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:id="@+id/editTextPiso"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/quicksand_regular"
+            android:hint="Piso"></EditText>
+
+        <EditText
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:id="@+id/editTextDepto"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/quicksand_regular"
+            android:hint="Depto"></EditText>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="@drawable/background_button_default"
+        android:fontFamily="@font/quicksand_bold"
+        android:text="Confirmar dirección"
+        android:textColor="@color/buttonDefaultTextColor"
+
+        />
+</LinearLayout>

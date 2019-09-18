@@ -25,6 +25,7 @@ public class ActivitySeleccionDeTipoPedido extends AppCompatActivity {
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        toolbar.setElevation(10);
         if(getSupportActionBar() != null){
             //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             //getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_location);

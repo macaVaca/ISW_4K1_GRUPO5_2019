@@ -1,4 +1,38 @@
 <resources>
     <string name="app_name">Deliver Eat</string>
     <string name="title_activity_maps">Map</string>
+
+    <string-array name="array_provincias">
+        <item>Provincia</item>
+        <item>CABA</item>
+        <item>Buenos Aires</item>
+        <item>Santa Fé</item>
+        <item>Córdoba</item>
+    </string-array>
+
+    <string-array name="array_localidades_ba">
+        <item>Localidad</item>
+        <item>Tandil</item>
+        <item>Bahia blanca</item>
+        <item>Lomas de Zamora</item>
+    </string-array>
+
+    <string-array name="array_localidades_sf">
+        <item>Localidad</item>
+        <item>Santa Fé</item>
+        <item>Rosario</item>
+    </string-array>
+
+    <string-array name="array_localidades_cb">
+        <item>Localidad</item>
+        <item>Córdoba</item>
+        <item>Río Ceballos</item>
+        <item>Río Cuarto</item>
+    </string-array>
+
+
+
+
+
+
 </resources>
