@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+import com.example.delivereat.activities.activity_pedido_loquesea.ActivityPedidoLoQueSea;
 import com.example.delivereat.util.DialogAlert;
 
 public class ActivitySeleccionDeTipoPedido extends AppCompatActivity {
@@ -86,14 +87,7 @@ public class ActivitySeleccionDeTipoPedido extends AppCompatActivity {
                                            String[] permissions, int[] grantResults) {
         switch (requestCode) {
             case ActivityPedidoLoQueSea.PERMISO_UBICACION: {
-                // If request is cancelled, the result arrays are empty.
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    iniciarPedidoDeLoQueSea();
-                } else {
-                    // permission denied, boo! Disable the
-                    // functionality that depends on this permission.
-                }
+                iniciarPedidoDeLoQueSea();
                 return;
             }
 

@@ -50,7 +50,7 @@
         <activity
             android:name=".ActivitySeleccionDeTipoPedido"
             android:label="" />
-        <activity android:name=".ActivityPedidoLoQueSea" />
+        <activity android:name=".activities.activity_pedido_loquesea.ActivityPedidoLoQueSea" />
     </application>
 
 </manifest>
