@@ -71,6 +71,7 @@ public class FragmentSeleccionDeUbicacionCliente extends Fragment implements OnM
         locationManager = ((ActivityPedidoLoQueSea) requireActivity()).getLocationManager();
         tvUbicacion = view.findViewById(R.id.textViewPlacePicker);
         view.findViewById(R.id.buttonPlacePicker).setOnClickListener(listenerSeleccionarUbicacion);
+        view.findViewById(R.id.buttonIntroducirManual).setOnClickListener(listenerSeleccionManual);
         return view;
     }
 
@@ -227,6 +228,13 @@ public class FragmentSeleccionDeUbicacionCliente extends Fragment implements OnM
             else{
                 new DialogAlert(requireContext(), "¡Ubicación no válida!").show();
             }
+        }
+    };
+
+    private View.OnClickListener listenerSeleccionManual = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            ((ActivityPedidoLoQueSea) requireActivity()).setDireccionClienteMapa(null);
         }
     };
 

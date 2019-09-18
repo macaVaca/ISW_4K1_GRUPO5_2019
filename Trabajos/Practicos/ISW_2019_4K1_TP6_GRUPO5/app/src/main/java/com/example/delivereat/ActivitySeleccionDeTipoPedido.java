@@ -1,8 +1,10 @@
 package com.example.delivereat;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -42,7 +44,8 @@ public class ActivitySeleccionDeTipoPedido extends AppCompatActivity {
                             ActivityPedidoLoQueSea.PERMISO_UBICACION);
                 }
                 else{
-                    iniciarPedidoDeLoQueSea();
+                    if (verificarConexionAInternet()) iniciarPedidoDeLoQueSea();
+                    else new DialogAlert(ActivitySeleccionDeTipoPedido.this, "¡Para realizar un pedido debes estar conectado a internet!").show();
                 }
             }
         });
@@ -87,7 +90,8 @@ public class ActivitySeleccionDeTipoPedido extends AppCompatActivity {
                                            String[] permissions, int[] grantResults) {
         switch (requestCode) {
             case ActivityPedidoLoQueSea.PERMISO_UBICACION: {
-                iniciarPedidoDeLoQueSea();
+                if (verificarConexionAInternet()) iniciarPedidoDeLoQueSea();
+                else new DialogAlert(ActivitySeleccionDeTipoPedido.this, "¡Para realizar un pedido debes estar conectado a internet!").show();
                 return;
             }
 
@@ -102,6 +106,10 @@ public class ActivitySeleccionDeTipoPedido extends AppCompatActivity {
         startActivity(intent);
     }
 
+    private boolean verificarConexionAInternet(){
+        ConnectivityManager connectivityManager = ((ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE));
+        return connectivityManager.getActiveNetworkInfo() != null && connectivityManager.getActiveNetworkInfo().isConnected();
+    }
 
 
 

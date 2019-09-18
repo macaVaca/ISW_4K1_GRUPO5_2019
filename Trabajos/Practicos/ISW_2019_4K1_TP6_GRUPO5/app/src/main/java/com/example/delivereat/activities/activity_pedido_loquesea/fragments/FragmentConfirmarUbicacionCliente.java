@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,8 +22,13 @@ public class FragmentConfirmarUbicacionCliente extends Fragment {
     private String localidad;
     private String calle;
     private String numero;
+    private String piso;
+    private String depto;
     private EditText editTextCalle;
     private EditText editTextNumero;
+    private EditText editTextDepto;
+    private EditText editTextPiso;
+    private TextView tvRegresarAMapa;
 
     public static FragmentConfirmarUbicacionCliente newInstance() {
         FragmentConfirmarUbicacionCliente fragment = new FragmentConfirmarUbicacionCliente();
@@ -37,6 +43,17 @@ public class FragmentConfirmarUbicacionCliente extends Fragment {
         View view = inflater.inflate(R.layout.fragment_ingresar_ubicacion, container, false);
         editTextCalle = view.findViewById(R.id.editTextCalle);
         editTextNumero = view.findViewById(R.id.editTextNro);
+        editTextPiso = view.findViewById(R.id.editTextPiso);
+        editTextDepto = view.findViewById(R.id.editTextDepto);
+
+        view.findViewById(R.id.buttonVolverAMapa).setOnClickListener(
+            new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ((ActivityPedidoLoQueSea)requireActivity()).setCurrentFragment(ActivityPedidoLoQueSea.FRAGMENT_UBICACION_CLIENTE);
+                }
+        });
+
         return view;
     }
 
@@ -44,11 +61,43 @@ public class FragmentConfirmarUbicacionCliente extends Fragment {
     public void onResume() {
         super.onResume();
         address = ((ActivityPedidoLoQueSea)requireActivity()).getDireccionClienteMapa();
-        provincia = address.getAdminArea();
-        localidad = address.getLocality();
-        calle = address.getThoroughfare();
-        numero = address.getSubThoroughfare();
-        editTextCalle.setText(calle);
-        editTextNumero.setText(numero);
+        actualizarCamposDeTexto();
+    }
+
+    private void actualizarCamposDeTexto() {
+        if(address != null){
+            provincia = address.getAdminArea();
+            localidad = address.getLocality();
+            calle = address.getThoroughfare();
+            numero = address.getSubThoroughfare();
+        }
+        else{
+            provincia = null;
+            localidad = null;
+            calle = null;
+            numero = null;
+        }
+
+        piso = null;
+        depto = null;
+
+        if (provincia != null) {
+
+        }
+        else{
+
+        }
+
+        if (localidad != null){
+
+        }
+        else{
+
+        }
+
+        editTextCalle.setText((calle == null)? "" : calle);
+        editTextNumero.setText((numero == null)? "" : numero);
+        editTextPiso.setText("");
+        editTextDepto.setText("");
     }
 }

@@ -22,8 +22,8 @@ import com.example.delivereat.activities.activity_pedido_loquesea.fragments.Frag
 
 public class ActivityPedidoLoQueSea extends AppCompatActivity {
 
-    private static final int FRAGMENT_UBICACION_CLIENTE = 0;
-    private static final int FRAGMENT_CONFIRMAR_UBICACION_CLIENTE = 1;
+    public static final int FRAGMENT_UBICACION_CLIENTE = 0;
+    public static final int FRAGMENT_CONFIRMAR_UBICACION_CLIENTE = 1;
     public static final int PERMISO_UBICACION = 1;
     LocationManager locationManager;
     TextView tvTitulo;
@@ -47,7 +47,7 @@ public class ActivityPedidoLoQueSea extends AppCompatActivity {
     }
 
 
-    private void setCurrentFragment(int codigo) {
+    public void setCurrentFragment(int codigo) {
         switch (codigo) {
             case FRAGMENT_UBICACION_CLIENTE:
                 getSupportFragmentManager().beginTransaction()
