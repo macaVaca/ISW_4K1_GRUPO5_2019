@@ -1,23 +1,16 @@
 package com.example.delivereat.activities.activity_pedido_loquesea;
 
-import android.Manifest;
-import android.content.Context;
-import android.content.pm.PackageManager;
 import android.location.Address;
-import android.location.Geocoder;
-import android.location.Location;
-import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.fragment.app.FragmentActivity;
 
 import com.example.delivereat.R;
 import com.example.delivereat.activities.activity_pedido_loquesea.fragments.FragmentConfirmarUbicacionCliente;
 import com.example.delivereat.activities.activity_pedido_loquesea.fragments.FragmentSeleccionDeUbicacionCliente;
+import com.example.delivereat.entities.Ubicacion;
 
 
 public class ActivityPedidoLoQueSea extends AppCompatActivity {
@@ -27,12 +20,12 @@ public class ActivityPedidoLoQueSea extends AppCompatActivity {
     public static final int PERMISO_UBICACION = 1;
     LocationManager locationManager;
     TextView tvTitulo;
-    //Direccion real de entrega
-    private Address direccionCliente;
-    //Direccion seleccionada en el mapa
+    //Direccion real de entrega, ubicacion es una entidad cerada por nosotros para manipular los datos necesarios para registrar la direccion real.
+    private Ubicacion direccionCliente;
+    //Direccion seleccionada en el mapa, address es un objeto manejado por el mapa de google
     private Address direccionClienteMapa;
     //Direccion del negocio
-    private Address direccionNegocio;
+    private Ubicacion direccionNegocio;
     //Direccion del negocio en el mapa
     private Address direccionNegocioMapa;
 
@@ -81,7 +74,7 @@ public class ActivityPedidoLoQueSea extends AppCompatActivity {
         setCurrentFragment(FRAGMENT_CONFIRMAR_UBICACION_CLIENTE);
     }
 
-    public void setDireccionCliente(Address direccionCliente) {
+    public void setDireccionCliente(Ubicacion direccionCliente) {
         this.direccionCliente = direccionCliente;
     }
 

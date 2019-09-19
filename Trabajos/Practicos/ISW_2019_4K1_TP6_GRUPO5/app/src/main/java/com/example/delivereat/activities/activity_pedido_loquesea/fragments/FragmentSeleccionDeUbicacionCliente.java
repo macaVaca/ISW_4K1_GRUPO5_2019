@@ -24,18 +24,14 @@ import com.example.delivereat.activities.activity_pedido_loquesea.ActivityPedido
 import com.example.delivereat.util.DialogAlert;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.LocationSource;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
-
-import static android.content.Context.LOCATION_SERVICE;
 
 /***
  * Este fragment tiene la funcion de dar al cliente la opción de seleccionar
@@ -217,7 +213,7 @@ public class FragmentSeleccionDeUbicacionCliente extends Fragment implements OnM
             if(currentAdress.getAdminArea() != null){
                 for (String provincia : provincias) {
                     if(currentAdress.getAdminArea().equals(provincia)){
-                        if(provincia.equals("Buenos Aires") || validarLocalidad(provincia, currentAdress.getLocality())) localidadValida = true;
+                        if(validarLocalidad(provincia, currentAdress.getLocality())) localidadValida = true;
                         break;
                     }
                 }
@@ -252,12 +248,12 @@ public class FragmentSeleccionDeUbicacionCliente extends Fragment implements OnM
         switch (provincia){
             case "Córdoba":
                 return getResources().getStringArray(R.array.array_localidades_cb);
-            case "Buenos Aires Province":
+            case "Buenos Aires":
                 return getResources().getStringArray(R.array.array_localidades_ba);
             case "Santa Fe":
                 return getResources().getStringArray(R.array.array_localidades_sf);
             default:
-                return getResources().getStringArray(R.array.array_localidades_cb);
+                return getResources().getStringArray(R.array.array_localidades_ca);
         }
     }
 

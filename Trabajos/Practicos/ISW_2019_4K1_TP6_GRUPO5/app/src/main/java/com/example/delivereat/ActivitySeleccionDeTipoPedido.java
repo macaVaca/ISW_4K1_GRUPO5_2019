@@ -28,12 +28,6 @@ public class ActivitySeleccionDeTipoPedido extends AppCompatActivity {
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setElevation(10);
-        if(getSupportActionBar() != null){
-            //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            //getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_location);
-            //((TextView) toolbar.findViewById(R.id.tvToolbar)).setText("Nuevo Pedido");
-        }
 
         findViewById(R.id.card_view_loquesea).setOnClickListener(new View.OnClickListener() {
             @Override

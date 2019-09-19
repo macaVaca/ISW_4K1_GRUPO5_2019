@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/standard_spinner_format"
+    android:layout_width="match_parent"
+    android:layout_height="45dp"
+    android:gravity="center_vertical"
+    android:hint="Provincia"
+    android:fontFamily="@font/quicksand_medium"
+    android:textSize="18sp"
+    android:textColor="#333" />

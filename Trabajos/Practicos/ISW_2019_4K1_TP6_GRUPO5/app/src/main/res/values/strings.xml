@@ -3,31 +3,40 @@
     <string name="title_activity_maps">Map</string>
 
     <string-array name="array_provincias">
-        <item>CABA</item>
+        <item>Provincia</item>
         <item>Buenos Aires</item>
         <item>Santa Fe</item>
         <item>Córdoba</item>
     </string-array>
 
+
+    <string-array name="array_localidades_ca">
+        <item>Localidad</item>
+    </string-array>
+
     <string-array name="array_localidades_ba">
+        <item>Localidad</item>
         <item>Tandil</item>
-        <item>Bahia blanca</item>
+        <item>Bahía Blanca</item>
         <item>Lomas de Zamora</item>
     </string-array>
 
     <string-array name="array_localidades_sf">
+        <item>Localidad</item>
         <item>Santa Fe</item>
         <item>Rosario</item>
     </string-array>
 
     <string-array name="array_localidades_cb">
+        <item>Localidad</item>
         <item>Córdoba</item>
         <item>Río Ceballos</item>
         <item>Río Cuarto</item>
     </string-array>
 
 
-
+    <string name="prompt_provincias">Provincia</string>
+    <string name="prompt_localidad">Localidad</string>
 
 
 

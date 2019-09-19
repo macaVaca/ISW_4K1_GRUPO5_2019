@@ -11,22 +11,20 @@
     android:padding="8dp">
 
     <Spinner
+        android:paddingStart="3dp"
         android:fontFamily="@font/quicksand_semibold"
         android:id="@+id/spinnerProvincia"
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:layout_margin="8dp"
-        android:spinnerMode="dialog"
-        android:entries="@array/array_provincias">
+        android:layout_margin="8dp">
     </Spinner>
 
     <Spinner
+        android:paddingStart="3dp"
         android:id="@+id/spinnerLocalidad"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_margin="8dp"
-        android:spinnerMode="dialog"
-        android:entries="@array/array_localidades_ba"
         android:fontFamily="@font/quicksand_semibold">
     </Spinner>
 
@@ -35,7 +33,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:fontFamily="@font/quicksand_regular"
+        android:fontFamily="@font/quicksand_medium"
         android:hint="Calle"></EditText>
 
     <LinearLayout android:layout_width="match_parent"
@@ -49,7 +47,7 @@
             android:id="@+id/editTextNro"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/quicksand_regular"
+            android:fontFamily="@font/quicksand_medium"
             android:hint="Nro"></EditText>
 
         <EditText
@@ -59,7 +57,7 @@
             android:id="@+id/editTextPiso"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/quicksand_regular"
+            android:fontFamily="@font/quicksand_medium"
             android:hint="Piso"></EditText>
 
         <EditText
@@ -68,7 +66,7 @@
             android:id="@+id/editTextDepto"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/quicksand_regular"
+            android:fontFamily="@font/quicksand_medium"
             android:hint="Depto"></EditText>
 
     </LinearLayout>
