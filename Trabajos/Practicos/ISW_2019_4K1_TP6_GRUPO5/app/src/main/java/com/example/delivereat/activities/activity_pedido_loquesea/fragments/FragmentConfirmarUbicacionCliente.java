@@ -228,7 +228,7 @@ public class FragmentConfirmarUbicacionCliente extends Fragment {
             String validacion = ubicacion.validar();
             if (validacion.equals("OK")){
                 ((ActivityPedidoLoQueSea)requireActivity()).setDireccionCliente(ubicacion);
-                new DialogAlert(requireContext(), "Todo OK, pedir los datos del negocio y del producto").show();
+
             }
             else new DialogAlert(requireContext(), validacion).show();
         }

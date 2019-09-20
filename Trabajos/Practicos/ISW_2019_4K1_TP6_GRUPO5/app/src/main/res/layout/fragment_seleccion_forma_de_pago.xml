@@ -3,11 +3,6 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include
-        layout="@layout/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
     <Space
         android:layout_width="match_parent"
         android:layout_height="25dp" />
@@ -22,56 +17,53 @@
         android:text="Elegir una forma de pago:"
         android:textAppearance="@style/TextAppearance.AppCompat.Display2"
         android:textSize="18sp" />
+ <LinearLayout
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:orientation="horizontal">
 
-    <RadioGroup
-        android:id="@+id/radioGroupFormaPago"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+     <RadioGroup
+         android:id="@+id/radioGroupFormaPago"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_weight="1">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+         <RadioButton
+             android:id="@+id/radioButtonEfectivo"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginStart="8dp"
+             android:layout_marginEnd="8dp"
+             android:fontFamily="sans-serif"
+             android:text="Efectivo"
+             android:textSize="18sp" />
 
-            <RadioButton
-                android:id="@+id/radioButtonEfectivo"
-                android:layout_width="232dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:fontFamily="sans-serif"
-                android:text="Efectivo"
-                android:textSize="18sp" />
+         <RadioButton
+             android:id="@+id/radioButtonTarjetaVISA"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginStart="8dp"
+             android:layout_marginEnd="8dp"
+             android:fontFamily="sans-serif"
+             android:text="Tajeta VISA"
+             android:textSize="18sp" />
 
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="138dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_weight="1"
-                android:background="@drawable/background_button_secondary"
-                android:fontFamily="sans-serif-black"
-                android:text="Ingresar Monto"
-                android:textColor="@color/colorPrimary"
-                android:textSize="14sp" />
-        </LinearLayout>
+     </RadioGroup>
 
-        <RadioButton
-            android:id="@+id/radioButtonTarjetaVISA"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:fontFamily="sans-serif"
-            android:text="Tajeta VISA"
-            android:textSize="18sp" />
+     <Button
+         android:id="@+id/buttonMontoPago"
+         android:layout_width="wrap_content"
+         android:layout_height="match_parent"
+         android:layout_marginStart="8dp"
+         android:layout_marginEnd="8dp"
+         android:background="@drawable/background_button_secondary"
+         android:fontFamily="sans-serif-black"
+         android:padding="8dp"
+         android:text="Ingresar Monto"
+         android:textColor="@color/colorPrimary"
+         android:textSize="14sp" />
+ </LinearLayout>
 
-    </RadioGroup>
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="25dp" />
 
     <LinearLayout
         android:id="@+id/llayoutDatosTarjeta"
@@ -101,6 +93,7 @@
             android:fontFamily="sans-serif-light"
             android:hint="Numero de Tarjeta"
             android:inputType="numberDecimal"
+            android:maxLength="16"
             android:nextFocusDown="@id/textNombreTitular"
             android:textSize="18sp" />
 
@@ -130,8 +123,9 @@
                 android:layout_marginEnd="8dp"
                 android:ems="10"
                 android:fontFamily="sans-serif-light"
-                android:hint="MM/AAAA"
-                android:inputType="numberDecimal"
+                android:hint="MM/AA"
+                android:inputType="date"
+                android:maxLength="5"
                 android:nextFocusLeft="@id/textCVC"
                 android:textSize="18sp" />
 
@@ -144,7 +138,8 @@
                 android:ems="10"
                 android:fontFamily="sans-serif-light"
                 android:hint="CVC"
-                android:inputType="date"
+                android:inputType="number"
+                android:maxLength="3"
                 android:textSize="18sp" />
         </LinearLayout>
 

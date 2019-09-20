@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.delivereat.R;
 import com.example.delivereat.activities.activity_pedido_loquesea.fragments.FragmentConfirmarUbicacionCliente;
 import com.example.delivereat.activities.activity_pedido_loquesea.fragments.FragmentSeleccionDeUbicacionCliente;
+import com.example.delivereat.activities.activity_pedido_loquesea.fragments.FragmentSeleccionFormaPago;
 import com.example.delivereat.entities.Ubicacion;
 
 
@@ -17,6 +18,7 @@ public class ActivityPedidoLoQueSea extends AppCompatActivity {
 
     public static final int FRAGMENT_UBICACION_CLIENTE = 0;
     public static final int FRAGMENT_CONFIRMAR_UBICACION_CLIENTE = 1;
+    public static final int FRAGMENT_SELECCION_FORMA_PAGO = 2;
     public static final int PERMISO_UBICACION = 1;
     LocationManager locationManager;
     TextView tvTitulo;
@@ -56,6 +58,12 @@ public class ActivityPedidoLoQueSea extends AppCompatActivity {
                         .commit();
                 tvTitulo.setText("Confirmá tu ubicación");
                 break;
+            case FRAGMENT_SELECCION_FORMA_PAGO:
+                getSupportFragmentManager().beginTransaction()
+                        /*.setCustomAnimations()*/
+                        .replace(R.id.fragment_container, FragmentSeleccionFormaPago.newInstance())
+                        .commit();
+                tvTitulo.setText("Seleccionar forma de pago");
             default:
                 break;
         }
@@ -76,7 +84,9 @@ public class ActivityPedidoLoQueSea extends AppCompatActivity {
 
     public void setDireccionCliente(Ubicacion direccionCliente) {
         this.direccionCliente = direccionCliente;
+        setCurrentFragment(FRAGMENT_SELECCION_FORMA_PAGO);
     }
+
 
     public Address getDireccionClienteMapa() {
         return direccionClienteMapa;
