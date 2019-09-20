@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        layout="@layout/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="21dp" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="sans-serif"
+            android:text="Lo que quieres pedir: "
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/editText2"
+            android:layout_width="match_parent"
+            android:layout_height="78dp"
+            android:layout_marginStart="8dp"
+            android:ems="10"
+            android:fontFamily="sans-serif-light"
+            android:gravity="start|top"
+            android:hint="Escriba aqui lo que necesita pedir"
+            android:inputType="textMultiLine"
+            android:nextFocusDown="@id/textCalle" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="23dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="206dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="198dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:fontFamily="sans-serif"
+                    android:gravity="center_vertical"
+                    android:text="Direccion del Local:"
+                    android:textSize="18sp" />
+
+                <ToggleButton
+                    android:id="@+id/buttonBuscarDir"
+                    android:layout_width="192dp"
+                    android:layout_height="38dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/background_button_secondary"
+                    android:checked="true"
+                    android:drawableEnd="@drawable/ic_location"
+                    android:drawableTint="@color/colorPrimary"
+                    android:fontFamily="sans-serif"
+                    android:gravity="clip_horizontal|center|center_vertical"
+                    android:text="BUSCAR DIRECCION"
+                    android:textColor="@color/colorPrimary"
+                    android:textOff="BUSCAR DIRECCION"
+                    android:textOn="BUSCAR DIRECCION" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/textCalle"
+                    style="@style/Widget.AppCompat.EditText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:fontFamily="sans-serif-light"
+                    android:hint="Calle"
+                    android:nextFocusRight="@id/textNumeroCalle" />
+
+                <EditText
+                    android:id="@+id/textNumeroCalle"
+                    style="@style/Widget.AppCompat.EditText"
+                    android:layout_width="42dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:fontFamily="sans-serif-light"
+                    android:hint="Numero"
+                    android:inputType="numberDecimal"
+                    android:nextFocusDown="@id/textCiudad" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="77dp"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/textCiudad"
+                    style="@style/Widget.AppCompat.EditText"
+                    android:layout_width="175dp"
+                    android:layout_height="61dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:fontFamily="sans-serif-light"
+                    android:hint="Ciudad"
+                    android:nextFocusRight="@id/textReferencia" />
+
+                <EditText
+                    android:id="@+id/textReferencia"
+                    style="@style/Widget.AppCompat.EditText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="61dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:fontFamily="sans-serif-light"
+                    android:hint="Referencia"
+                    android:nextFocusDown="@id/textPrecioEstim" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="68dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="40dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="0"
+                android:fontFamily="sans-serif"
+                android:scrollIndicators="bottom"
+                android:text="$"
+                android:textAlignment="textEnd"
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/textPrecioEstim"
+                style="@style/Widget.AppCompat.EditText"
+                android:layout_width="146dp"
+                android:layout_height="61dp"
+                android:ems="10"
+                android:fontFamily="sans-serif-light"
+                android:hint="Precio Estimado" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/background_button_default"
+            android:fontFamily="sans-serif-black"
+            android:text="CONTINUAR"
+            android:textColor="@color/buttonDefaultTextColor" />
+
+    </LinearLayout>
+
+</LinearLayout>

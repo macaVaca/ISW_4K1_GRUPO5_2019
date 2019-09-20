@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        layout="@layout/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="25dp" />
+
+    <TextView
+        android:id="@+id/textFormaPago"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="sans-serif"
+        android:text="Elegir una forma de pago:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+        android:textSize="18sp" />
+
+    <RadioGroup
+        android:id="@+id/radioGroupFormaPago"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radioButtonEfectivo"
+                android:layout_width="232dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:fontFamily="sans-serif"
+                android:text="Efectivo"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="138dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/background_button_secondary"
+                android:fontFamily="sans-serif-black"
+                android:text="Ingresar Monto"
+                android:textColor="@color/colorPrimary"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <RadioButton
+            android:id="@+id/radioButtonTarjetaVISA"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="sans-serif"
+            android:text="Tajeta VISA"
+            android:textSize="18sp" />
+
+    </RadioGroup>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="25dp" />
+
+    <LinearLayout
+        android:id="@+id/llayoutDatosTarjeta"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="sans-serif"
+            android:text="Datos de la tarjeta:"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/textNumTarjeta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:ems="10"
+            android:focusable="auto"
+            android:fontFamily="sans-serif-light"
+            android:hint="Numero de Tarjeta"
+            android:inputType="numberDecimal"
+            android:nextFocusDown="@id/textNombreTitular"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/textNombreTitular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:ems="10"
+            android:fontFamily="sans-serif-light"
+            android:hint="Nombre del Titular (frente de la tarjeta)"
+            android:inputType="textPersonName"
+            android:nextFocusDown="@id/textFechaExp"
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="59dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/textFechaExp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:ems="10"
+                android:fontFamily="sans-serif-light"
+                android:hint="MM/AAAA"
+                android:inputType="numberDecimal"
+                android:nextFocusLeft="@id/textCVC"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/textCVC"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:ems="10"
+                android:fontFamily="sans-serif-light"
+                android:hint="CVC"
+                android:inputType="date"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_button_default"
+        android:fontFamily="sans-serif-black"
+        android:text="CONTINUAR"
+        android:textColor="@color/buttonDefaultTextColor"
+        android:textSize="18sp" />
+
+</LinearLayout>
