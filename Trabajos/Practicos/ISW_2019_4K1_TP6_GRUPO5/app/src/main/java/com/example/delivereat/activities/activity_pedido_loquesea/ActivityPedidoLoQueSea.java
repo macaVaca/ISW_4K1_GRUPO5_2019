@@ -18,10 +18,12 @@ public class ActivityPedidoLoQueSea extends AppCompatActivity {
 
     public static final int FRAGMENT_UBICACION_CLIENTE = 0;
     public static final int FRAGMENT_CONFIRMAR_UBICACION_CLIENTE = 1;
-    public static final int FRAGMENT_SELECCION_FORMA_PAGO = 2;
+    public static final int FRAGMENT_DESCRIPCION_PEDIDO = 2;
+    public static final int FRAGMENT_SELECCION_FORMA_PAGO = 3;
     public static final int PERMISO_UBICACION = 1;
     LocationManager locationManager;
-    TextView tvTitulo;
+    //textView publica para ser accedida por los fragmentos siguientes de otro fragmento
+    public TextView tvTitulo;
     //Direccion real de entrega, ubicacion es una entidad cerada por nosotros para manipular los datos necesarios para registrar la direccion real.
     private Ubicacion direccionCliente;
     //Direccion seleccionada en el mapa, address es un objeto manejado por el mapa de google
