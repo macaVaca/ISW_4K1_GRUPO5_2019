@@ -18,12 +18,9 @@ import com.example.delivereat.activities.activity_pedido_loquesea.ActivityPedido
 
 public class FragmentSeleccionFormaPago extends Fragment {
 
-    public static final int FRAGMENT_MONTO_PAGO = 0;
-
     RadioGroup rdFormaPago;
     View viewDatosTarjeta;
     Button  buttonMontoPago;
-
     Double valorMontoPago;
 
     RadioGroup.OnCheckedChangeListener checkedFromaPago = new RadioGroup.OnCheckedChangeListener() {
@@ -41,7 +38,6 @@ public class FragmentSeleccionFormaPago extends Fragment {
     };
 
    public static FragmentSeleccionFormaPago newInstance() {
-
        Bundle args = new Bundle();
        FragmentSeleccionFormaPago fragment = new FragmentSeleccionFormaPago();
        fragment.setArguments(args);
@@ -65,38 +61,13 @@ public class FragmentSeleccionFormaPago extends Fragment {
     private View.OnClickListener listenerIngresarMonto = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
-            setCurrentFragment(FRAGMENT_MONTO_PAGO);
+            ((ActivityPedidoLoQueSea) requireActivity()).setCurrentFragment(ActivityPedidoLoQueSea.FRAGMENT_MONTO_PAGO);
         }
     };
 
-    public void setCurrentFragment (int fragmento) {
-       switch (fragmento) {
-           case FRAGMENT_MONTO_PAGO :
-               FragmentMontoPago fragMontoPago = (FragmentMontoPago) getFragmentManager().findFragmentById(R.id.textMontoPago);
-
-               if ( fragMontoPago  != null) {
-                   getFragmentManager().beginTransaction()
-                   .replace(R.id.fragment_container, fragMontoPago)
-                   .addToBackStack(null)
-                   .commit();
-
-               } else {
-                   getFragmentManager().beginTransaction()
-                           .replace(R.id.fragment_container, FragmentMontoPago.newInstance())
-                           .addToBackStack(null)
-                           .commit();
-                   ((ActivityPedidoLoQueSea) requireActivity()).tvTitulo.setText("Ingrese el monto a pagar");
-               }
-               break;
-
-               default:
-       }
-    }
-
     public void setValorMontoPago(Double montoPago) {
         this.valorMontoPago = montoPago;
-        setCurrentFragment(FRAGMENT_MONTO_PAGO);
+        ((ActivityPedidoLoQueSea)requireActivity()).setCurrentFragment(ActivityPedidoLoQueSea.FRAGMENT_MONTO_PAGO);
     }
 
 

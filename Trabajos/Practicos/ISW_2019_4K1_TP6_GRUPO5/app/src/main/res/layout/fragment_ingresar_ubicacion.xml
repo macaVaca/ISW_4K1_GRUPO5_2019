@@ -48,7 +48,7 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/quicksand_medium"
-            android:hint="Nro"></EditText>
+            android:hint="Nro" />
 
         <EditText
             android:inputType="number"
@@ -58,7 +58,7 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/quicksand_medium"
-            android:hint="Piso"></EditText>
+            android:hint="Piso" />
 
         <EditText
             android:layout_weight="1"
@@ -67,7 +67,7 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/quicksand_medium"
-            android:hint="Depto"></EditText>
+            android:hint="Depto" />
 
     </LinearLayout>
 

@@ -234,6 +234,7 @@ public class FragmentConfirmarUbicacionCliente extends Fragment {
         }
         else{
             new DialogAlert(requireContext(), "¡Seleccione provincia y localidad!").show();
+            new DialogAlert(requireContext(), "¡Seleccione provincia y localidad!").show();
         }
     }
 }

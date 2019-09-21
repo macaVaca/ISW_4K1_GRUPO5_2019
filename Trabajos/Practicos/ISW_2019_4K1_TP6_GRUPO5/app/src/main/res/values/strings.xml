@@ -34,6 +34,12 @@
         <item>Río Cuarto</item>
     </string-array>
 
+    <string-array name="unidades">
+        <item>Unidades</item>
+        <item>Kilogramos</item>
+        <item>Metros</item>
+    </string-array>
+
 
     <string name="prompt_provincias">Provincia</string>
     <string name="prompt_localidad">Localidad</string>
