@@ -1,11 +1,17 @@
 package com.example.delivereat.activities.activity_pedido_loquesea;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.location.Address;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.delivereat.R;
 import com.example.delivereat.activities.activity_pedido_loquesea.fragments.FragmentConfirmarUbicacionCliente;
@@ -32,6 +38,7 @@ public class ActivityPedidoLoQueSea extends AppCompatActivity {
     private int currentFragment;
 
     public static final int PERMISO_UBICACION = 1;
+
     LocationManager locationManager;
     //textView publica para ser accedida por los fragmentos siguientes de otro fragmento
     private TextView tvTitulo;
@@ -54,14 +61,6 @@ public class ActivityPedidoLoQueSea extends AppCompatActivity {
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         setContentView(R.layout.activity_nuevo_pedido);
         tvTitulo = findViewById(R.id.tvToolbar);
-
-
-        //Todo: BORRAR
-        DetallePedidoLoQueSea detalleDePrueba = new DetallePedidoLoQueSea("Prueba", 10f, 1f, 0);
-        pedido.add(detalleDePrueba);
-        pedido.add(detalleDePrueba);
-        pedido.add(detalleDePrueba);
-
         setCurrentFragment(FRAGMENT_PEDIDO);
     }
 
@@ -88,7 +87,7 @@ public class ActivityPedidoLoQueSea extends AppCompatActivity {
                         /*.setCustomAnimations()*/
                         .replace(R.id.fragment_container, FragmentDescripcionPedido.newInstance())
                         .commit();
-                tvTitulo.setText("Agregá productos a tu pedido");
+                tvTitulo.setText("Tu pedido");
                 break;
             case FRAGMENT_NUEVO_DETALLE_PRODUCTO:
                 getSupportFragmentManager().beginTransaction()
@@ -157,4 +156,5 @@ public class ActivityPedidoLoQueSea extends AppCompatActivity {
         if (currentFragment == FRAGMENT_NUEVO_DETALLE_PRODUCTO) setCurrentFragment(FRAGMENT_PEDIDO);
         else super.onBackPressed();
     }
+
 }

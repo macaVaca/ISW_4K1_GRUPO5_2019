@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,7 +20,11 @@ import java.util.ArrayList;
 
 public class FragmentDescripcionPedido extends Fragment {
 
-    RecyclerView recyclerView;
+    private RecyclerView recyclerView;
+    private RecyclerAdapterPedido recyclerAdapterPedido;
+    private TextView tvTotal;
+    private ArrayList<DetallePedidoLoQueSea> pedido;
+    private View emptyLayout;
 
     public static FragmentDescripcionPedido newInstance() {
         FragmentDescripcionPedido fragment = new FragmentDescripcionPedido();
@@ -41,12 +46,30 @@ public class FragmentDescripcionPedido extends Fragment {
 
         recyclerView = view.findViewById(R.id.recyclerDetalles);
 
-        ArrayList<DetallePedidoLoQueSea> detallesPedidoLoQueSeas = ((ActivityPedidoLoQueSea) requireActivity()).getPedido();
-        RecyclerAdapterPedido recyclerAdapterPedido = new RecyclerAdapterPedido(requireContext(), detallesPedidoLoQueSeas);
+        pedido = ((ActivityPedidoLoQueSea) requireActivity()).getPedido();
+        recyclerAdapterPedido = new RecyclerAdapterPedido(requireContext(), pedido);
         recyclerView.setAdapter(recyclerAdapterPedido);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
-
+        tvTotal = view.findViewById(R.id.tvTotal);
+        emptyLayout = view.findViewById(R.id.emptyLayout);
+        calcularTotal();
+        updateList();
         return view;
+    }
+
+    private void calcularTotal(){
+        float total = 0;
+        for (DetallePedidoLoQueSea det : pedido){
+            total += det.getPrecioFinal();
+        }
+
+        String textTotal = "$" + total;
+        tvTotal.setText(textTotal);
+    }
+
+    private void updateList(){
+        emptyLayout.setVisibility((recyclerAdapterPedido.getItemCount() == 0) ? View.VISIBLE : View.GONE);
+        recyclerView.setVisibility((recyclerAdapterPedido.getItemCount() == 0) ? View.GONE : View.VISIBLE);
     }
 }

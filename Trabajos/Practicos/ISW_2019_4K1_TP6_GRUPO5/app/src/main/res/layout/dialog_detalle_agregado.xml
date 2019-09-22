@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:background="@drawable/background_dialog"
+    android:layout_margin="20dp">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_gravity="center"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_check"/>
+
+    <TextView
+        android:id="@+id/tvMensaje2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@android:color/transparent"
+        android:fontFamily="@font/quicksand_semibold"
+        android:gravity="center"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:text="¡Se ha agregado el producto con éxito! \n ¿Agragar otro?"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp">
+
+    </TextView>
+
+    <LinearLayout android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="horizontal">
+
+    <Button
+        android:id="@+id/buttonNo"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/background_button_default_dark"
+        android:fontFamily="@font/quicksand_bold"
+        android:minWidth="250dp"
+        android:layout_margin="5dp"
+        android:text="NO"
+        android:textColor="@color/buttonDefaultTextColor"/>
+
+        <Button
+            android:layout_margin="5dp"
+            android:id="@+id/buttonYES"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/background_button_default"
+            android:fontFamily="@font/quicksand_bold"
+            android:minWidth="250dp"
+            android:text="SI"
+            android:textColor="@color/buttonDefaultTextColor"/>
+
+</LinearLayout>
+</LinearLayout>

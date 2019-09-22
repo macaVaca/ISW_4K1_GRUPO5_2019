@@ -13,7 +13,7 @@
         android:layout_height="70dp"
         android:src="@drawable/ic_warning"
         android:layout_gravity="center"
-        android:background="@android:color/transparent"></ImageView>
+        android:background="@android:color/transparent"/>
 
     <TextView
         android:background="@android:color/transparent"
