@@ -7,7 +7,7 @@
     android:layout_margin="20dp">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/ivConfirmar"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_gravity="center"
@@ -15,7 +15,7 @@
         android:src="@drawable/ic_check"/>
 
     <TextView
-        android:id="@+id/tvMensaje2"
+        android:id="@+id/tvMensaje"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

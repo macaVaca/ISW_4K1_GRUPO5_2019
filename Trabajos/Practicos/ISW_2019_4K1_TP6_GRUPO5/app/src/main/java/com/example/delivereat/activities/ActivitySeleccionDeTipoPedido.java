@@ -1,4 +1,4 @@
-package com.example.delivereat;
+package com.example.delivereat.activities;
 
 import android.Manifest;
 import android.content.Context;
@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+import com.example.delivereat.R;
 import com.example.delivereat.activities.activity_pedido_loquesea.ActivityPedidoLoQueSea;
 import com.example.delivereat.util.DialogAlert;
 

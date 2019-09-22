@@ -16,9 +16,10 @@ import com.example.delivereat.R;
 import com.example.delivereat.activities.activity_pedido_loquesea.ActivityPedidoLoQueSea;
 import com.example.delivereat.entities.DetallePedidoLoQueSea;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-public class FragmentDescripcionPedido extends Fragment {
+public class FragmentPedido extends Fragment {
 
     private RecyclerView recyclerView;
     private RecyclerAdapterPedido recyclerAdapterPedido;
@@ -26,8 +27,8 @@ public class FragmentDescripcionPedido extends Fragment {
     private ArrayList<DetallePedidoLoQueSea> pedido;
     private View emptyLayout;
 
-    public static FragmentDescripcionPedido newInstance() {
-        FragmentDescripcionPedido fragment = new FragmentDescripcionPedido();
+    public static FragmentPedido newInstance() {
+        FragmentPedido fragment = new FragmentPedido();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -47,29 +48,30 @@ public class FragmentDescripcionPedido extends Fragment {
         recyclerView = view.findViewById(R.id.recyclerDetalles);
 
         pedido = ((ActivityPedidoLoQueSea) requireActivity()).getPedido();
-        recyclerAdapterPedido = new RecyclerAdapterPedido(requireContext(), pedido);
+        recyclerAdapterPedido = new RecyclerAdapterPedido(this, pedido);
         recyclerView.setAdapter(recyclerAdapterPedido);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
         tvTotal = view.findViewById(R.id.tvTotal);
         emptyLayout = view.findViewById(R.id.emptyLayout);
-        calcularTotal();
         updateList();
         return view;
     }
 
+    private DecimalFormat df = new DecimalFormat("0.00");
     private void calcularTotal(){
         float total = 0;
         for (DetallePedidoLoQueSea det : pedido){
             total += det.getPrecioFinal();
         }
 
-        String textTotal = "$" + total;
+        String textTotal = "$" + " " + df.format(total);
         tvTotal.setText(textTotal);
     }
 
-    private void updateList(){
+    void updateList(){
         emptyLayout.setVisibility((recyclerAdapterPedido.getItemCount() == 0) ? View.VISIBLE : View.GONE);
         recyclerView.setVisibility((recyclerAdapterPedido.getItemCount() == 0) ? View.GONE : View.VISIBLE);
+        calcularTotal();
     }
 }

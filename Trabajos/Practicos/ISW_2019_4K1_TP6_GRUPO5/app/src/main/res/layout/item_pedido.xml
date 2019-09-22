@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="wrap_content"
-    android:gravity="center"
-    android:background="#fff"
+    android:layout_width="match_parent"
+    android:background="#FFF"
     android:layout_marginBottom="1dp"
-    android:padding="5dp">
+    >
+
+    <LinearLayout
+        android:orientation="horizontal" android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:background="?attr/selectableItemBackground"
+        android:padding="5dp">
 
     <ImageView
         android:background="@drawable/image_container_border"
@@ -28,7 +35,7 @@
         <LinearLayout android:orientation="horizontal"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-           >
+            >
 
             <TextView
                 android:id="@+id/tvNombreArticulo"
@@ -41,37 +48,35 @@
                 android:lines="2"
                 android:fontFamily="@font/quicksand_medium"/>
 
+        </LinearLayout>
 
+        <LinearLayout android:orientation="horizontal"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:paddingEnd="5dp">
 
+            <TextView
+                android:id="@+id/tvUnidades"
+                android:layout_height="match_parent"
+                android:gravity="bottom"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="2 unidades"
+                android:textColor="#555"
+                android:textSize="14sp"
+                android:fontFamily="@font/quicksand_medium"/>
+
+            <TextView android:id="@+id/tvSubtotal"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="$2678.90"
+                android:textColor="#333"
+                android:textSize="18sp"
+                android:fontFamily="@font/quicksand_regular"/>
 
         </LinearLayout>
 
-            <LinearLayout android:orientation="horizontal"
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent"
-                android:paddingEnd="5dp">
-
-                <TextView
-
-                    android:id="@+id/tvUnidades"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:text="2 unidades"
-                    android:textColor="#555"
-                    android:textSize="14sp"
-                    android:fontFamily="@font/quicksand_medium"/>
-
-                <TextView android:id="@+id/tvSubtotal"
-                    android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
-                    android:text="$2678.90"
-                    android:textColor="#333"
-                    android:textSize="18sp"
-                    android:fontFamily="@font/quicksand_regular"/>
-
-            </LinearLayout>
-
     </LinearLayout>
-</LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>

@@ -1,4 +1,4 @@
-package com.example.delivereat;
+package com.example.delivereat.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,7 +11,7 @@ public class SplashScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, ActivityLogin.class);
         startActivity(intent);
 
         finish();

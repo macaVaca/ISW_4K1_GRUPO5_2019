@@ -3,22 +3,23 @@ package com.example.delivereat.activities.activity_pedido_loquesea.fragments;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Matrix;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.MediaStore;
-import android.text.Layout;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 
 import com.example.delivereat.R;
@@ -26,8 +27,8 @@ import com.example.delivereat.activities.activity_pedido_loquesea.ActivityPedido
 import com.example.delivereat.entities.DetallePedidoLoQueSea;
 import com.example.delivereat.util.DialogAlert;
 
-import java.io.File;
 import java.io.IOException;
+import java.text.DecimalFormat;
 
 public class FragmentNuevoDetalleDeProducto extends Fragment {
 
@@ -35,6 +36,11 @@ public class FragmentNuevoDetalleDeProducto extends Fragment {
     private ImageView ivProducto;
     private View layoutImagen;
     private View placeholderNoImage;
+    private EditText etNombre;
+    private EditText etCantidad;
+    private EditText etSubtotal;
+    private EditText etPrecioU;
+    private Spinner spinnerUnidad;
 
     private static final int GALLERY_REQUEST_CODE = 2;
     private static final int CAMERA_REQUEST_CODE = 1;
@@ -63,26 +69,70 @@ public class FragmentNuevoDetalleDeProducto extends Fragment {
             }
         });
 
+        etNombre = view.findViewById(R.id.etNombreProducto);
+        etPrecioU = view.findViewById(R.id.etPrecioUnitario);
+        etCantidad = view.findViewById(R.id.etCantidad);
+        spinnerUnidad = view.findViewById(R.id.spinnerUnidad);
+        etSubtotal = view.findViewById(R.id.etSubtotal);
+
+        ArrayAdapter<CharSequence> adapterUnidades = ArrayAdapter.createFromResource(requireActivity(),
+                R.array.unidades, R.layout.plantilla_spinner);
+        adapterUnidades.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerUnidad.setAdapter(adapterUnidades);
+
         togglePlaceholders();
+        df.setMaximumFractionDigits(2);
+
+        etCantidad.addTextChangedListener(twSubtotal);
+        etPrecioU.addTextChangedListener(twSubtotal);
+
         return view;
     }
 
     private View.OnClickListener listenerAgregarProducto = new View.OnClickListener(){
         @Override
         public void onClick(View v) {
-            String mensaje = validarCampos();
-            if (mensaje.equals("OK")) {
-                DetallePedidoLoQueSea detalle = new DetallePedidoLoQueSea("Detalle de prueba", 20f, 1f, 0);
+            DetallePedidoLoQueSea detalle = crearDetalle();
+            if (detalle != null) {
                 if (bitmap != null) detalle.setImagen(bitmap);
                 ((ActivityPedidoLoQueSea)requireActivity()).insertarDetalleDePedido(detalle);
-                new DialogDetalleAgregado((ActivityPedidoLoQueSea) requireActivity(), oso).show();
+                new DialogConfirmar((ActivityPedidoLoQueSea) requireActivity(), oso, "", R.drawable.ic_check).show();
             }
-            else new DialogAlert(requireContext(), mensaje).show();
         }
     };
 
-    private String validarCampos(){
-        return "OK";
+    private DetallePedidoLoQueSea crearDetalle(){
+        String nombre;
+        float cantidad;
+        float precio;
+        int unidad;
+        String error = "";
+        DetallePedidoLoQueSea detalle = null;
+
+        if(!etNombre.getText().toString().isEmpty()){
+            nombre = etNombre.getText().toString();
+            if (!etCantidad.getText().toString().isEmpty() && !etCantidad.getText().toString().equals(".")){
+                cantidad = Float.parseFloat(etCantidad.getText().toString());
+                if (cantidad > 0){
+                    if (!etPrecioU.getText().toString().isEmpty() && !etPrecioU.getText().toString().equals(".")){
+                        precio = Float.parseFloat(etPrecioU.getText().toString());
+                        if (precio > 0){
+                            unidad = spinnerUnidad.getSelectedItemPosition();
+                            detalle = new DetallePedidoLoQueSea(nombre, precio, cantidad, unidad, bitmap);
+                        }
+                        else error = "Ingresá un precio unitario mayor a 0";
+                    }
+                    else error = "Ingresá una cantidad mayor a 0";
+                }
+                else error = "Ingresá una cantidad mayor a 0";
+            }
+            else error = "Ingresá una cantidad mayor a 0";
+        }
+        else error = "Ingrese una descripción al producto";
+
+        if (!error.isEmpty()) new DialogAlert(requireContext(), error).show();
+
+        return detalle;
     }
 
     @Override
@@ -167,7 +217,7 @@ public class FragmentNuevoDetalleDeProducto extends Fragment {
         public void onYes() {
             Intent intent = new Intent(Intent.ACTION_PICK);
             intent.setType("image/*");
-            String[] mimeTypes = {"image/jpeg", "image/png"};
+            String[] mimeTypes = {"image/jpeg"};
             intent.putExtra(Intent.EXTRA_MIME_TYPES,mimeTypes);
             startActivityForResult(intent, GALLERY_REQUEST_CODE);
         }
@@ -177,5 +227,33 @@ public class FragmentNuevoDetalleDeProducto extends Fragment {
             Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
             startActivityForResult(cameraIntent, CAMERA_REQUEST_CODE);
         }
+    };
+
+    private TextWatcher twSubtotal = new TextWatcher() {
+
+        public void afterTextChanged(Editable s) {
+
+        }
+
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            etSubtotal.setText(calcularSubtotal());
+        }
+    };
+
+
+    private DecimalFormat df = new DecimalFormat("0.00");
+
+    private String calcularSubtotal(){
+        if (!etCantidad.getText().toString().isEmpty() && !etCantidad.getText().toString().equals(".") &&
+                !etPrecioU.getText().toString().isEmpty() && !etPrecioU.getText().toString().equals(".")){
+
+            Float cantidad = Float.parseFloat(etCantidad.getText().toString());
+            Float precioUnitario = Float.parseFloat(etPrecioU.getText().toString());
+            return "$" + df.format(cantidad * precioUnitario);
+
+        }
+        return "$0.00";
     };
 }

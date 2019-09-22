@@ -1,21 +1,15 @@
 package com.example.delivereat.activities.activity_pedido_loquesea;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.location.Address;
 import android.location.LocationManager;
-import android.net.Uri;
 import android.os.Bundle;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import com.example.delivereat.R;
 import com.example.delivereat.activities.activity_pedido_loquesea.fragments.FragmentConfirmarUbicacionCliente;
-import com.example.delivereat.activities.activity_pedido_loquesea.fragments.FragmentDescripcionPedido;
+import com.example.delivereat.activities.activity_pedido_loquesea.fragments.FragmentPedido;
 import com.example.delivereat.activities.activity_pedido_loquesea.fragments.FragmentMontoPago;
 import com.example.delivereat.activities.activity_pedido_loquesea.fragments.FragmentNuevoDetalleDeProducto;
 import com.example.delivereat.activities.activity_pedido_loquesea.fragments.FragmentSeleccionDeUbicacionCliente;
@@ -85,7 +79,7 @@ public class ActivityPedidoLoQueSea extends AppCompatActivity {
             case FRAGMENT_PEDIDO:
                 getSupportFragmentManager().beginTransaction()
                         /*.setCustomAnimations()*/
-                        .replace(R.id.fragment_container, FragmentDescripcionPedido.newInstance())
+                        .replace(R.id.fragment_container, FragmentPedido.newInstance())
                         .commit();
                 tvTitulo.setText("Tu pedido");
                 break;
