@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.delivereat.R;
 import com.example.delivereat.activities.activity_pedido_loquesea.ActivityPedidoLoQueSea;
 import com.example.delivereat.entities.DetallePedidoLoQueSea;
+import com.example.delivereat.util.DialogAlert;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -55,6 +56,7 @@ public class FragmentPedido extends Fragment {
         tvTotal = view.findViewById(R.id.tvTotal);
         emptyLayout = view.findViewById(R.id.emptyLayout);
         updateList();
+        view.findViewById(R.id.buttonConfirmarPedido).setOnClickListener(listenerConfirmarPedido);
         return view;
     }
 
@@ -74,4 +76,14 @@ public class FragmentPedido extends Fragment {
         recyclerView.setVisibility((recyclerAdapterPedido.getItemCount() == 0) ? View.GONE : View.VISIBLE);
         calcularTotal();
     }
+
+    View.OnClickListener listenerConfirmarPedido = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if(recyclerAdapterPedido.getItemCount() > 0){
+                ((ActivityPedidoLoQueSea)requireActivity()).setCurrentFragment(ActivityPedidoLoQueSea.FRAGMENT_SELECCION_FORMA_PAGO);
+            }
+            else new DialogAlert(requireContext(), "¡Pedido vacío!" ).show();
+        }
+    };
 }

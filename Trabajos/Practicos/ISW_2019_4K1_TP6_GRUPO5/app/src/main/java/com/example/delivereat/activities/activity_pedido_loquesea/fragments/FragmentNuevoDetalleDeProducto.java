@@ -16,7 +16,6 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -142,7 +141,7 @@ public class FragmentNuevoDetalleDeProducto extends Fragment {
                 Uri uri = data.getData();
                 try {
                     bitmap = MediaStore.Images.Media.getBitmap(requireContext().getContentResolver(), uri);
-                    bitmap = getScaledBitMap(bitmap, 1000);
+                    bitmap = getScaledBitMap(bitmap);
                     ivProducto.setImageBitmap(bitmap);
                     togglePlaceholders();
                 }
@@ -156,7 +155,7 @@ public class FragmentNuevoDetalleDeProducto extends Fragment {
                     bitmap = (Bitmap) data.getExtras().get("data");
                     Log.d("debug", "onActivityResult: haybitmap" );
                     if (bitmap != null){
-                        bitmap = getScaledBitMap(bitmap, 1000);
+                        bitmap = getScaledBitMap(bitmap);
                         ivProducto.setImageBitmap(bitmap);
                         togglePlaceholders();
                     }
@@ -172,10 +171,22 @@ public class FragmentNuevoDetalleDeProducto extends Fragment {
         }
     };
 
-    private Bitmap getScaledBitMap(Bitmap bmp, int tamanoDeseado){
+    /***
+     * Con este metodo garantizamos la eficiencia en el manejo de las imagenes
+     * Formateamos cualquier imagen Jpeg que se seleccione o se tome y le hacemos resize a 1000 * 1000 px como máximo
+     * Una imagen de 1000 x 1000 con profundidad de bits de 32 (máximo) tiene 4 bytes x pixel
+     * lo cual tiene 1000 * 1000 * 4 bytes, o sea 4000000 bytes, lo que son 4000kb, o sea, 4Mb como máximo que se puede subir.
+     * No limitamos a los usuarios a seleccionar una imagen liviana porque directamente nosotros la hacemos liviana.
+     * Al server se subiría entonces como máximo con 4mb.
+     *
+     * @param bmp bitmap a reducir
+     * @return bitmap resizeado y comprimido.
+     */
+    private Bitmap getScaledBitMap(Bitmap bmp){
         float height = bmp.getHeight();
         float width = bmp.getWidth();
         float multiplicador;
+        int tamanoDeseado = 1000;
 
         if (height > width){
             //Imagen mas alta
