@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="5dp"
+    android:background="#fff">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerDetalles"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#f2f2f2"
+        android:paddingBottom="1dp"
+        >
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <include
+        android:id="@+id/emptyLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        layout="@layout/pedido_empty_layout"
+        android:visibility="gone"
+        />
+
+    <LinearLayout android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="10dp">
+
+
+    <TextView android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:text="Total:"
+        android:textColor="#555"
+        android:fontFamily="@font/quicksand_medium"
+        android:layout_weight="1"
+        android:textSize="18sp" />
+
+        <TextView android:id="@+id/tvTotal"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="$0.00"
+            android:textColor="#555"
+            android:fontFamily="@font/quicksand_medium"
+            android:textSize="20sp"
+           />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/buttonAgregarDetalle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="10dp"
+        android:paddingBottom="2dp"
+        android:background="@drawable/background_button_default"
+        android:fontFamily="@font/quicksand_bold"
+        android:text="Agregar producto"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:textColor="@color/buttonDefaultTextColor"
+        />
+
+    <Button
+        android:id="@+id/buttonConfirmarPedido"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:paddingBottom="2dp"
+        android:background="@drawable/background_button_default_dark"
+        android:fontFamily="@font/quicksand_bold"
+        android:text="Confirmar pedido"
+        android:textColor="@color/buttonDefaultTextColor"
+        />
+
+</LinearLayout>

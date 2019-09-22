@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        app:srcCompat="@drawable/ic_goods"
+        android:layout_marginTop="110dp"/>
+
+    <TextView
+        android:layout_marginTop="15dp"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:textSize="22sp"
+        android:textColor="#333"
+        android:fontFamily="@font/quicksand_medium"
+        android:textAlignment="center"
+        android:text="Pedido vacío"
+        />
+
+    <TextView
+        android:layout_marginTop="5dp"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:textSize="18sp"
+        android:textColor="#333"
+        android:fontFamily="@font/quicksand_regular"
+        android:textAlignment="center"
+        android:text="Agrega algún producto"
+        />
+
+</LinearLayout>

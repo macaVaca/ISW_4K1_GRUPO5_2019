@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+    <LinearLayout
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="5dp"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp">
+
+    <TextView
+        android:textSize="16sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="Producto"
+        android:textColor="@color/colorPrimary"
+        android:fontFamily="@font/quicksand_medium"/>
+
+    <EditText
+        android:maxLength="300"
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nombre del Producto"
+        android:fontFamily="@font/quicksand_medium"
+        android:textColor="#333"/>
+
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp">
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:textSize="16sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="Cantidad"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="@font/quicksand_medium"/>
+
+            <EditText
+                android:maxLength="5"
+                android:inputType="numberDecimal"
+                android:textAlignment="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:fontFamily="@font/quicksand_medium"
+                android:textColor="#333"/>
+
+        </LinearLayout>
+
+        <Spinner
+            android:entries="@array/unidades"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="3dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp">
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:textSize="16sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="Precio Unitario"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="@font/quicksand_medium"/>
+
+            <EditText
+                android:inputType="numberDecimal"
+                android:textAlignment="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1.00"
+                android:fontFamily="@font/quicksand_medium"
+                android:textColor="#333"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:textSize="16sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="Subtotal"
+                android:textColor="@color/colorPrimaryDark"
+                android:fontFamily="@font/quicksand_bold"/>
+
+            <EditText
+                android:enabled="false"
+                android:inputType="numberDecimal"
+                android:textAlignment="center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="1.00"
+                android:fontFamily="@font/quicksand_bold"
+                android:textColor="#000"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+        <TextView
+            android:textSize="16sp"
+            android:layout_width="match_parent"
+            android:textAlignment="center"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="Imagen del producto"
+            android:textColor="@color/colorPrimary"
+            android:fontFamily="@font/quicksand_medium"/>
+
+        <TextView
+            android:padding="8dp"
+            android:id="@+id/tvPlaceholderNoImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/quicksand_regular"
+            android:text="No se ha seleccionado ninguna imagen"
+            android:textAlignment="center"
+            android:textColor="#111"
+            android:layout_marginBottom="10dp"/>
+
+        <LinearLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/layoutImagenSeleccionada"
+            android:orientation="vertical">
+
+            <ImageView
+                android:padding="1dp"
+                android:id="@+id/ivImagenProducto"
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/image_container_border"
+                />
+
+            <TextView
+                android:id="@+id/buttonEliminarImagen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/quicksand_bold"
+                android:paddingBottom="13dp"
+                android:paddingTop="13dp"
+                android:text="ELIMINAR IMAGEN"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimary" />
+
+        </LinearLayout>
+
+        <Button
+        android:id="@+id/buttonSeleccionarImage"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginBottom="10dp"
+        android:paddingBottom="2dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:background="@drawable/background_button_default_dark"
+        android:fontFamily="@font/quicksand_bold"
+        android:text="Seleccionar imagen"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/buttonDefaultTextColor"
+        />
+
+        <LinearLayout android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_width="match_parent">
+
+
+
+    </LinearLayout>
+
+</LinearLayout>
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/buttonAgregarDetalle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:paddingBottom="2dp"
+        android:background="@drawable/background_button_default"
+        android:fontFamily="@font/quicksand_bold"
+        android:text="Agregar producto al pedido"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:textColor="@color/buttonDefaultTextColor"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="10dp"
+        />
+
+</LinearLayout>

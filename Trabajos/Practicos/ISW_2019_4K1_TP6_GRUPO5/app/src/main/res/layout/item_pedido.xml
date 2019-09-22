@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:background="#fff"
+    android:layout_marginBottom="1dp"
+    android:padding="5dp">
+
+    <ImageView
+        android:background="@drawable/image_container_border"
+        android:padding="1dp"
+        android:layout_margin="3dp"
+        android:id="@+id/ivImagenProducto"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:src="@mipmap/bmp_cart"/>
+
+    <LinearLayout android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:paddingEnd="5dp"
+        android:layout_marginStart="5dp">
+
+
+
+        <LinearLayout android:orientation="horizontal"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+           >
+
+            <TextView
+                android:id="@+id/tvNombreArticulo"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:text="Nombre Producto asdasdasdasdas d asd asdas asd"
+                android:textColor="#333"
+                android:textSize="18sp"
+                android:maxLines="2"
+                android:lines="2"
+                android:fontFamily="@font/quicksand_medium"/>
+
+
+
+
+        </LinearLayout>
+
+            <LinearLayout android:orientation="horizontal"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:paddingEnd="5dp">
+
+                <TextView
+
+                    android:id="@+id/tvUnidades"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="2 unidades"
+                    android:textColor="#555"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/quicksand_medium"/>
+
+                <TextView android:id="@+id/tvSubtotal"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="$2678.90"
+                    android:textColor="#333"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/quicksand_regular"/>
+
+            </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>
