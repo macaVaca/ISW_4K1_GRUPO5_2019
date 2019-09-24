@@ -174,7 +174,6 @@ public class FragmentSeleccionDeUbicacionCliente extends Fragment implements OnM
 
 
     private Location getLastKnownLocation() {
-        locationManager = getLocationManager();
         List<String> providers = locationManager.getProviders(true);
         Location bestLocation = null;
         Location l;
