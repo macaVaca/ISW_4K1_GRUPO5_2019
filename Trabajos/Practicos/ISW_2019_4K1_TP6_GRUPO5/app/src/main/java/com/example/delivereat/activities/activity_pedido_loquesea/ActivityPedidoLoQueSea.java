@@ -3,16 +3,19 @@ package com.example.delivereat.activities.activity_pedido_loquesea;
 import android.location.Address;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.delivereat.R;
 import com.example.delivereat.activities.activity_pedido_loquesea.fragments.FragmentConfirmarUbicacionCliente;
+import com.example.delivereat.activities.activity_pedido_loquesea.fragments.FragmentConfirmarUbicacionNegocio;
+import com.example.delivereat.activities.activity_pedido_loquesea.fragments.FragmentFechaHora;
 import com.example.delivereat.activities.activity_pedido_loquesea.fragments.FragmentPedido;
-import com.example.delivereat.activities.activity_pedido_loquesea.fragments.FragmentMontoPago;
 import com.example.delivereat.activities.activity_pedido_loquesea.fragments.FragmentNuevoDetalleDeProducto;
 import com.example.delivereat.activities.activity_pedido_loquesea.fragments.FragmentSeleccionDeUbicacionCliente;
+import com.example.delivereat.activities.activity_pedido_loquesea.fragments.FragmentSeleccionDeUbicacionNegocio;
 import com.example.delivereat.activities.activity_pedido_loquesea.fragments.FragmentSeleccionFormaPago;
 import com.example.delivereat.entities.DetallePedidoLoQueSea;
 import com.example.delivereat.entities.Ubicacion;
@@ -27,7 +30,9 @@ public class ActivityPedidoLoQueSea extends AppCompatActivity {
     public static final int FRAGMENT_PEDIDO = 2;
     public static final int FRAGMENT_NUEVO_DETALLE_PRODUCTO = 3;
     public static final int FRAGMENT_SELECCION_FORMA_PAGO = 4;
-    public static final int FRAGMENT_MONTO_PAGO = 5;
+    public static final int FRAGMENT_CONFIRMAR_UBICACION_NEGOCIO = 6;
+    public static final int FRAGMENT_UBICACION_NEGOCIO = 7;
+    public static final int FRAGMENT_CUANDO_LO_ENVIAMOS = 8;
 
     private int currentFragment;
 
@@ -55,19 +60,39 @@ public class ActivityPedidoLoQueSea extends AppCompatActivity {
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         setContentView(R.layout.activity_nuevo_pedido);
         tvTitulo = findViewById(R.id.tvToolbar);
-        setCurrentFragment(FRAGMENT_PEDIDO);
+        setCurrentFragment(FRAGMENT_UBICACION_NEGOCIO);
+        findViewById(R.id.backbutton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
 
     public void setCurrentFragment(int codigo) {
         currentFragment = codigo;
         switch (codigo) {
+            case FRAGMENT_UBICACION_NEGOCIO:
+                getSupportFragmentManager().beginTransaction()
+                        /*.setCustomAnimations()*/
+                        .replace(R.id.fragment_container, FragmentSeleccionDeUbicacionNegocio.newInstance())
+                        .commit();
+                tvTitulo.setText("Donde buscámos tu pedido");
+                break;
+            case FRAGMENT_CONFIRMAR_UBICACION_NEGOCIO:
+                getSupportFragmentManager().beginTransaction()
+                        /*.setCustomAnimations()*/
+                        .replace(R.id.fragment_container, FragmentConfirmarUbicacionNegocio.newInstance())
+                        .commit();
+                tvTitulo.setText("Confirmá los datos del negocio");
+                break;
             case FRAGMENT_UBICACION_CLIENTE:
                 getSupportFragmentManager().beginTransaction()
                         /*.setCustomAnimations()*/
                         .replace(R.id.fragment_container, FragmentSeleccionDeUbicacionCliente.newInstance())
                         .commit();
-                tvTitulo.setText("Seleccioná tu ubicación");
+                tvTitulo.setText("¿Dónde llevamos tu pedido?");
                 break;
             case FRAGMENT_CONFIRMAR_UBICACION_CLIENTE:
                 getSupportFragmentManager().beginTransaction()
@@ -96,11 +121,14 @@ public class ActivityPedidoLoQueSea extends AppCompatActivity {
                         .replace(R.id.fragment_container, FragmentSeleccionFormaPago.newInstance())
                         .commit();
                 tvTitulo.setText("Seleccionar forma de pago");
-            case FRAGMENT_MONTO_PAGO:
+                break;
+            case FRAGMENT_CUANDO_LO_ENVIAMOS:
                 getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_container, FragmentMontoPago.newInstance())
+                        /*.setCustomAnimations()*/
+                        .replace(R.id.fragment_container, FragmentFechaHora.newInstance())
                         .commit();
-                tvTitulo.setText("Ingrese el monto a pagar");
+                tvTitulo.setText("¿Cuándo enviamos su pedido?");
+                break;
             default:
                 break;
         }
@@ -119,18 +147,24 @@ public class ActivityPedidoLoQueSea extends AppCompatActivity {
         setCurrentFragment(FRAGMENT_CONFIRMAR_UBICACION_CLIENTE);
     }
 
+    public void setDireccionNegocioMapa(Address currentAdress) {
+        this.direccionNegocioMapa = currentAdress;
+        setCurrentFragment(FRAGMENT_CONFIRMAR_UBICACION_NEGOCIO);
+    }
+
     public void setDireccionCliente(Ubicacion direccionCliente) {
         this.direccionCliente = direccionCliente;
         setCurrentFragment(FRAGMENT_SELECCION_FORMA_PAGO);
     }
 
+    public void setDireccionNegocio(Ubicacion ubicacion) {
+        this.direccionNegocio = ubicacion;
+        setCurrentFragment(FRAGMENT_PEDIDO);
+    }
+
 
     public Address getDireccionClienteMapa() {
         return direccionClienteMapa;
-    }
-
-    public void descartarDetallesDePedido(){
-        pedido = new ArrayList<>();
     }
 
     public void eliminarDetalleDePedido(int index){
@@ -145,10 +179,20 @@ public class ActivityPedidoLoQueSea extends AppCompatActivity {
         return pedido;
     }
 
-    @Override
-    public void onBackPressed() {
-        if (currentFragment == FRAGMENT_NUEVO_DETALLE_PRODUCTO) setCurrentFragment(FRAGMENT_PEDIDO);
-        else super.onBackPressed();
+    public Address getDireccionNegocioMapa() {
+        return direccionNegocioMapa;
     }
 
+    public float getTotalAPagar(){
+        float total = 0;
+        for (DetallePedidoLoQueSea det : pedido){
+            total += det.getPrecioFinal();
+        }
+        return total;
+    }
+
+
+    public void grabarDatosDePago() {
+        setCurrentFragment(FRAGMENT_CUANDO_LO_ENVIAMOS);
+    }
 }

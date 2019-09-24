@@ -1,32 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:animateLayoutChanges="true">
+    android:layout_height="match_parent" android:animateLayoutChanges="true"
+    android:padding="10dp">
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="25dp" />
 
     <TextView
-        android:id="@+id/textFormaPago"
+        android:textSize="16sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:fontFamily="sans-serif"
-        android:text="Elegir una forma de pago:"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
-        android:textSize="18sp" />
+        android:padding="5dp"
+        android:text="Elegí una forma de pago"
+        android:textColor="@color/colorPrimary"
+        android:fontFamily="@font/quicksand_bold"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="8dp">
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:layout_marginBottom="10dp">
 
         <RadioGroup
             android:id="@+id/radioGroupFormaPago"
-            android:layout_width="192dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0">
 
@@ -34,8 +32,8 @@
                 android:id="@+id/radioButtonEfectivo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:fontFamily="sans-serif"
+                android:layout_marginStart="5dp"
+                android:fontFamily="@font/quicksand_regular"
                 android:text="Efectivo"
                 android:textSize="18sp" />
 
@@ -43,8 +41,8 @@
                 android:id="@+id/radioButtonTarjetaVISA"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:fontFamily="sans-serif"
+                android:layout_marginStart="5dp"
+                android:fontFamily="@font/quicksand_regular"
                 android:text="Tajeta VISA"
                 android:textSize="18sp" />
 
@@ -56,101 +54,113 @@
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:layout_weight="1"
-            android:orientation="vertical">
-
-            <Button
-                android:id="@+id/buttonMontoPago"
-                android:layout_width="204dp"
-                android:layout_height="37dp"
-                android:background="@drawable/background_button_secondary"
-                android:fontFamily="sans-serif-black"
-                android:foregroundGravity="right"
-                android:padding="8dp"
-                android:text="Ingresar Monto"
-                android:textColor="@color/colorPrimary"
-                android:textSize="14sp" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="27dp" />
-        </LinearLayout>
+            android:orientation="vertical"/>
 
     </LinearLayout>
 
+    <LinearLayout android:orientation="vertical"
+        android:layout_height="0dp"
+        android:layout_width="wrap_content"
+        android:layout_weight="1">
+
+        <LinearLayout android:orientation="vertical"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:id="@+id/layoutMontoPago">
+
+            <TextView
+                android:textSize="16sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="A pagar con ($)"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="@font/quicksand_medium"/>
+
+            <EditText
+                android:inputType="numberDecimal"
+                android:id="@+id/editTextAPagar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:fontFamily="@font/quicksand_regular"
+                android:hint="Ingresar monto"/>
+
+        </LinearLayout>
 
     <LinearLayout
         android:id="@+id/llayoutDatosTarjeta"
         android:layout_width="match_parent"
-        android:layout_height="180dp"
-        android:orientation="vertical"
-        android:padding="8dp"
-        android:visibility="visible">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textView8"
+            android:textSize="16sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:fontFamily="sans-serif"
-            android:text="Datos de la tarjeta:"
-            android:textSize="18sp" />
-
-        <EditText
-            android:id="@+id/textNumTarjeta"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:ems="10"
-            android:focusable="auto"
-            android:fontFamily="sans-serif-light"
-            android:hint="Numero de Tarjeta"
-            android:inputType="numberDecimal"
-            android:maxLength="16"
-            android:nextFocusDown="@id/textNombreTitular"
-            android:textSize="18sp" />
+            android:text="Datos de la tarjeta"
+            android:textColor="@color/colorPrimary"
+            android:fontFamily="@font/quicksand_medium"/>
 
         <EditText
             android:id="@+id/textNombreTitular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="5dp"
             android:ems="10"
-            android:fontFamily="sans-serif-light"
+            android:fontFamily="@font/quicksand_regular"
             android:hint="Nombre del Titular (frente de la tarjeta)"
             android:inputType="textPersonName"
-            android:nextFocusDown="@id/textFechaExp"
+            android:textSize="18sp" />
+
+        <com.example.delivereat.util.CustomEditText
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:id="@+id/textNumTarjeta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:focusable="auto"
+            android:fontFamily="@font/quicksand_regular"
+            android:hint="Numero de Tarjeta"
+            android:inputType="numberDecimal"
+            android:textAlignment="center"
+            android:maxLength="19"
             android:textSize="18sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="59dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
 
-            <EditText
+            <com.example.delivereat.util.CustomEditText
+                android:textAlignment="center"
                 android:id="@+id/textFechaExp"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:ems="10"
-                android:fontFamily="sans-serif-light"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/quicksand_regular"
                 android:hint="MM/AA"
-                android:inputType="date"
+                android:inputType="number"
                 android:maxLength="5"
-                android:nextFocusLeft="@id/textCVC"
                 android:textSize="18sp" />
 
             <EditText
+                android:textAlignment="center"
+                android:layout_weight="1"
                 android:id="@+id/textCVC"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:ems="10"
-                android:fontFamily="sans-serif-light"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:fontFamily="@font/quicksand_regular"
                 android:hint="CVC"
                 android:inputType="number"
                 android:maxLength="3"
@@ -159,15 +169,52 @@
 
     </LinearLayout>
 
-    <Button
+        <Space android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_weight="1"/>
+
+        <LinearLayout android:orientation="horizontal"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:padding="5dp"
+            android:layout_marginBottom="10dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="5dp"
+                android:ems="10"
+                android:layout_weight="1"
+                android:text="Total a pagar"
+                android:fontFamily="@font/quicksand_semibold"
+                android:textSize="18sp" />
+
+            <TextView
+                android:textAlignment="textEnd"
+                android:text="$100.00"
+                android:layout_weight="1"
+                android:id="@+id/tvTotalAPagar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="5dp"
+                android:ems="10"
+                android:fontFamily="@font/quicksand_semibold"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <Button
         android:id="@+id/buttonContFormaPago"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/background_button_default"
         android:fontFamily="@font/quicksand_bold"
         android:padding="8dp"
-        android:text="CONTINUAR"
-        android:textColor="@color/buttonDefaultTextColor"
-        android:textSize="18sp" />
+        android:text="CONTINUAR" android:textColor="#FFF"/>
 
+</LinearLayout>
 </LinearLayout>

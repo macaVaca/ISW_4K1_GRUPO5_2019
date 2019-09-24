@@ -2,7 +2,6 @@ package com.example.delivereat.activities.activity_pedido_loquesea.fragments;
 
 import android.location.Address;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +20,7 @@ import com.example.delivereat.activities.activity_pedido_loquesea.ActivityPedido
 import com.example.delivereat.entities.Ubicacion;
 import com.example.delivereat.util.DialogAlert;
 
-public class FragmentConfirmarUbicacionCliente extends Fragment {
+public class FragmentConfirmarUbicacionNegocio extends Fragment {
 
     private Address address;
     private String provincia;
@@ -40,8 +39,8 @@ public class FragmentConfirmarUbicacionCliente extends Fragment {
     boolean primeraCarga = true;
 
 
-    public static FragmentConfirmarUbicacionCliente newInstance() {
-        FragmentConfirmarUbicacionCliente fragment = new FragmentConfirmarUbicacionCliente();
+    public static FragmentConfirmarUbicacionNegocio newInstance() {
+        FragmentConfirmarUbicacionNegocio fragment = new FragmentConfirmarUbicacionNegocio();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -59,8 +58,6 @@ public class FragmentConfirmarUbicacionCliente extends Fragment {
         spinnerProvincias = view.findViewById(R.id.spinnerProvincia);
         spinnerLocalidades = view.findViewById(R.id.spinnerLocalidad);
 
-        view.findViewById(R.id.layoutNombreNegocio).setVisibility(View.GONE);
-
         ArrayAdapter<CharSequence> adapterProvincias = ArrayAdapter.createFromResource(requireActivity(),
                 R.array.array_provincias, R.layout.plantilla_spinner);
 
@@ -76,14 +73,14 @@ public class FragmentConfirmarUbicacionCliente extends Fragment {
             new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ((ActivityPedidoLoQueSea)requireActivity()).setCurrentFragment(ActivityPedidoLoQueSea.FRAGMENT_UBICACION_CLIENTE);
+                    ((ActivityPedidoLoQueSea)requireActivity()).setCurrentFragment(ActivityPedidoLoQueSea.FRAGMENT_UBICACION_NEGOCIO);
                 }
         });
 
         view.findViewById(R.id.buttonConfirmarUbicacion).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                validarUbicacionCliente();
+                validarUbicacionNegocio();
             }
         });
 
@@ -93,7 +90,7 @@ public class FragmentConfirmarUbicacionCliente extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        address = ((ActivityPedidoLoQueSea)requireActivity()).getDireccionClienteMapa();
+        address = ((ActivityPedidoLoQueSea)requireActivity()).getDireccionNegocioMapa();
         cargarCamposDeTexto();
         spinnerLocalidades.setOnItemSelectedListener(listenerSpinnerLocalidades);
         spinnerProvincias.setOnItemSelectedListener(listenerSpinnerProvincias);
@@ -225,13 +222,14 @@ public class FragmentConfirmarUbicacionCliente extends Fragment {
         }
     };
 
-    private void validarUbicacionCliente(){
+    private void validarUbicacionNegocio(){
+
         if (spinnerLocalidades.getSelectedItemPosition() > 0 && spinnerProvincias.getSelectedItemPosition() > 0){
             Ubicacion ubicacion = new Ubicacion(spinnerProvincias.getSelectedItem().toString(), spinnerLocalidades.getSelectedItem().toString(),
                     editTextCalle.getText().toString(), editTextNumero.getText().toString(), editTextPiso.getText().toString(), editTextDepto.getText().toString(), editTextReferencia.getText().toString());
             String validacion = ubicacion.validar();
             if (validacion.equals("OK")){
-                ((ActivityPedidoLoQueSea)requireActivity()).setDireccionCliente(ubicacion);
+                ((ActivityPedidoLoQueSea)requireActivity()).setDireccionNegocio(ubicacion);
 
             }
             else new DialogAlert(requireContext(), validacion).show();

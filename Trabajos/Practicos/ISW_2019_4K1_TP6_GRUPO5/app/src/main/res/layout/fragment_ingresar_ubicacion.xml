@@ -4,11 +4,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ScrollView android:layout_height="wrap_content" android:layout_width="match_parent">
+
 <LinearLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_weight="1"
     android:orientation="vertical"
     android:padding="8dp">
+
+    <LinearLayout android:orientation="vertical"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/layoutNombreNegocio"/>
+
+    <TextView
+        android:textSize="16sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="Provincia"
+        android:textColor="@color/colorPrimary"
+        android:fontFamily="@font/quicksand_medium"/>
 
     <Spinner
         android:paddingStart="3dp"
@@ -19,6 +35,15 @@
         android:layout_margin="8dp">
     </Spinner>
 
+    <TextView
+        android:textSize="16sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="Localidad"
+        android:textColor="@color/colorPrimary"
+        android:fontFamily="@font/quicksand_medium"/>
+
     <Spinner
         android:paddingStart="3dp"
         android:id="@+id/spinnerLocalidad"
@@ -28,13 +53,22 @@
         android:fontFamily="@font/quicksand_semibold">
     </Spinner>
 
+    <TextView
+        android:textSize="16sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="Dirección"
+        android:textColor="@color/colorPrimary"
+        android:fontFamily="@font/quicksand_medium"/>
+
     <EditText
         android:id="@+id/editTextCalle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:fontFamily="@font/quicksand_medium"
-        android:hint="Calle"></EditText>
+        android:fontFamily="@font/quicksand_regular"
+        android:hint="Calle"/>
 
     <LinearLayout android:layout_width="match_parent"
         android:layout_height="wrap_content" android:orientation="horizontal"
@@ -47,7 +81,7 @@
             android:id="@+id/editTextNro"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/quicksand_medium"
+            android:fontFamily="@font/quicksand_regular"
             android:hint="Nro" />
 
         <EditText
@@ -57,7 +91,7 @@
             android:id="@+id/editTextPiso"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/quicksand_medium"
+            android:fontFamily="@font/quicksand_regular"
             android:hint="Piso" />
 
         <EditText
@@ -66,12 +100,35 @@
             android:id="@+id/editTextDepto"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/quicksand_medium"
+            android:fontFamily="@font/quicksand_regular"
             android:hint="Depto" />
 
     </LinearLayout>
 
+    <TextView
+        android:textSize="16sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="Referencia (Opcional)"
+        android:textColor="@color/colorPrimary"
+        android:fontFamily="@font/quicksand_regular"/>
+
+    <EditText
+        android:id="@+id/editTextReferencia"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:fontFamily="@font/quicksand_regular"
+        android:hint="Ingresar referencia"/>
+
 </LinearLayout>
+
+    </ScrollView>
+
+    <Space android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_width="match_parent"/>
 
     <Button
         android:id="@+id/buttonConfirmarUbicacion"

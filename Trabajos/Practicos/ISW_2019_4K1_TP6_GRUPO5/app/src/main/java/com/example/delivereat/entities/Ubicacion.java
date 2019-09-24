@@ -8,21 +8,24 @@ public class Ubicacion {
     private String numero;
     private String piso;
     private String depto;
+    private String referencia;
 
-    public Ubicacion(String provincia, String localidad, String calle, String numero) {
+    public Ubicacion(String provincia, String localidad, String calle, String numero, String referencia) {
         this.provincia = provincia;
         this.localidad = localidad;
         this.calle = calle;
         this.numero = numero;
+        this.referencia = referencia;
     }
 
-    public Ubicacion(String provincia, String localidad, String calle, String numero, String piso, String depto) {
+    public Ubicacion(String provincia, String localidad, String calle, String numero, String piso, String depto, String referencia) {
         this.provincia = provincia;
         this.localidad = localidad;
         this.calle = calle;
         this.numero = numero;
         this.piso = piso;
         this.depto = depto;
+        this.referencia = referencia;
     }
 
     public String validar(){

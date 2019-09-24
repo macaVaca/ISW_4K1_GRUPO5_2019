@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:orientation="vertical"
+    android:layout_height="wrap_content"
+    android:padding="20dp"
+    android:gravity="center_horizontal"
+    android:background="@drawable/background_dialog">
+
+    <ImageView android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/ic_check"
+        android:layout_gravity="center"
+        android:background="@android:color/transparent"/>
+
+    <TextView
+        android:background="@android:color/transparent"
+        android:layout_gravity="center"
+        android:id="@+id/tvMensaje"
+        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:text="MENSAJE"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:textSize="16sp"
+        android:fontFamily="@font/quicksand_semibold"
+        android:textColor="@color/colorPrimary"
+        android:textAlignment="center">
+
+    </TextView>
+
+    <Button
+        android:minWidth="250dp"
+        android:id="@+id/buttonCerrar"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:background="@drawable/background_button_default"
+        android:text="CERRAR"
+        android:fontFamily="@font/quicksand_bold"
+        android:textColor="@color/buttonDefaultTextColor"></Button>
+
+
+</LinearLayout>

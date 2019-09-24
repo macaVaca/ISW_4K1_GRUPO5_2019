@@ -1,7 +1,6 @@
 package com.example.delivereat.activities.activity_pedido_loquesea.fragments;
 
 import android.Manifest;
-import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -48,7 +47,7 @@ import java.util.Locale;
  *  - Si no está el GPS activado no se debe mostrar este fragment y se pasa a la selección manual de ubicacion automaticamente
  *
  */
-public class FragmentSeleccionDeUbicacionCliente extends Fragment implements OnMapReadyCallback {
+public class FragmentSeleccionDeUbicacionNegocio extends Fragment implements OnMapReadyCallback {
 
     public static final int PERMISO_UBICACION = 1;
     private GoogleMap mMap;
@@ -87,8 +86,8 @@ public class FragmentSeleccionDeUbicacionCliente extends Fragment implements OnM
         }
     }
 
-    public static FragmentSeleccionDeUbicacionCliente newInstance() {
-        FragmentSeleccionDeUbicacionCliente fragment = new FragmentSeleccionDeUbicacionCliente();
+    public static FragmentSeleccionDeUbicacionNegocio newInstance() {
+        FragmentSeleccionDeUbicacionNegocio fragment = new FragmentSeleccionDeUbicacionNegocio();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -210,19 +209,18 @@ public class FragmentSeleccionDeUbicacionCliente extends Fragment implements OnM
             String[] provincias = getResources().getStringArray(R.array.array_provincias);
             boolean localidadValida = false;
 
-            if (currentAdress != null) {
-                if (currentAdress.getAdminArea() != null) {
+            if (currentAdress != null){
+                if(currentAdress.getAdminArea() != null){
                     for (String provincia : provincias) {
-                        if (currentAdress.getAdminArea().equals(provincia)) {
-                            if (validarLocalidad(provincia, currentAdress.getLocality()))
-                                localidadValida = true;
+                        if(currentAdress.getAdminArea().equals(provincia)){
+                            if(validarLocalidad(provincia, currentAdress.getLocality())) localidadValida = true;
                             break;
                         }
                     }
                 }
             }
 
-            if(localidadValida) ((ActivityPedidoLoQueSea) requireActivity()).setDireccionClienteMapa(currentAdress);
+            if(localidadValida) ((ActivityPedidoLoQueSea) requireActivity()).setDireccionNegocioMapa(currentAdress);
             else{
                 new DialogAlert(requireContext(), "¡Ubicación no válida!").show();
             }
@@ -232,7 +230,7 @@ public class FragmentSeleccionDeUbicacionCliente extends Fragment implements OnM
     private View.OnClickListener listenerSeleccionManual = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            ((ActivityPedidoLoQueSea) requireActivity()).setDireccionClienteMapa(null);
+            ((ActivityPedidoLoQueSea) requireActivity()).setDireccionNegocioMapa(null);
         }
     };
 

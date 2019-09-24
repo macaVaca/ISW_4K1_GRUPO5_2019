@@ -77,11 +77,11 @@ public class FragmentPedido extends Fragment {
         calcularTotal();
     }
 
-    View.OnClickListener listenerConfirmarPedido = new View.OnClickListener() {
+    private View.OnClickListener listenerConfirmarPedido = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             if(recyclerAdapterPedido.getItemCount() > 0){
-                ((ActivityPedidoLoQueSea)requireActivity()).setCurrentFragment(ActivityPedidoLoQueSea.FRAGMENT_SELECCION_FORMA_PAGO);
+                ((ActivityPedidoLoQueSea)requireActivity()).setCurrentFragment(ActivityPedidoLoQueSea.FRAGMENT_UBICACION_CLIENTE);
             }
             else new DialogAlert(requireContext(), "¡Pedido vacío!" ).show();
         }

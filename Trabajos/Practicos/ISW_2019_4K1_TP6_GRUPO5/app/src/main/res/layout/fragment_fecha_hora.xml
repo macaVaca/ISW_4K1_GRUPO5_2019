@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+
+
+    <RadioGroup
+        android:id="@+id/radioGroupFecha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/radioButtonYa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:fontFamily="@font/quicksand_regular"
+            android:text="Lo antes posible"
+            android:checked="true"
+            android:textSize="18sp" />
+
+        <RadioButton
+            android:id="@+id/radioButtonLater"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:fontFamily="@font/quicksand_regular"
+            android:text="Entrega programada"
+            android:textSize="18sp" />
+
+    </RadioGroup>
+
+    <LinearLayout android:id="@+id/layout_fecha_hora"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:baselineAligned="false">
+
+        <LinearLayout android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <TextView
+                android:layout_marginBottom="5dp"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="Fecha"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="@font/quicksand_medium"/>
+
+            <Button
+                android:id="@+id/buttonSeleccionarFecha"
+                android:layout_width="160dp"
+                android:layout_height="40dp"
+                android:textSize="13sp"
+                android:paddingBottom="2dp"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
+                android:background="@drawable/button_fechahora"
+                android:fontFamily="@font/quicksand_bold"
+                android:text="Seleccionar Fecha"
+                android:layout_gravity="center"
+                android:textColor="#333"
+                android:layout_marginBottom="15dp"
+                />
+
+        </LinearLayout>
+
+
+        <LinearLayout android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+
+            <TextView
+                android:textAlignment="center"
+                android:layout_marginBottom="5dp"
+                android:textSize="16sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="Hora"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="@font/quicksand_medium"/>
+
+
+
+            <Button
+                android:id="@+id/buttonSeleccionarHora"
+                android:layout_width="160dp"
+                android:layout_height="40dp"
+                android:textSize="13sp"
+                android:paddingBottom="2dp"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
+                android:background="@drawable/button_fechahora"
+                android:fontFamily="@font/quicksand_bold"
+                android:text="Seleccionar HORA"
+                android:layout_gravity="center"
+                android:textColor="#333"
+                />
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+    <Space android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_width="match_parent"/>
+
+    <Button
+        android:id="@+id/buttonConfirmarPedido"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:paddingBottom="2dp"
+        android:background="@drawable/background_button_default"
+        android:fontFamily="@font/quicksand_bold"
+        android:text="CONFIRMAR PEDIDO"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:textColor="@color/buttonDefaultTextColor"
+        android:layout_gravity="bottom"
+
+        />
+
+</LinearLayout>
