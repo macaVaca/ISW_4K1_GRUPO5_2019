@@ -39,6 +39,9 @@ public class FragmentSeleccionFormaPago extends Fragment {
 
     private int seleccion = 0;
 
+    /**
+     * radio botones de seleccion de forma de pago: pago en efectivo o pago con tarjeta VISA
+     */
     private RadioGroup.OnCheckedChangeListener checkedFormaPago = new RadioGroup.OnCheckedChangeListener() {
         @Override
         public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -99,6 +102,9 @@ public class FragmentSeleccionFormaPago extends Fragment {
        return view;
     }
 
+    /**
+     * valida los datos de la tarjeta de Credito VISA y lo guarda para pagar el pedido
+     */
     private void validarYGrabarTarjetaDeCredito(){
         if (!((EditText)requireActivity().findViewById(R.id.textNombreTitular)).getText().toString().isEmpty()){
             String validacionTarjeta = validarNumeroTarjeta();
@@ -126,6 +132,11 @@ public class FragmentSeleccionFormaPago extends Fragment {
         else new DialogAlert(requireContext(), "Ingrese titular de la tarjeta").show();
     }
 
+
+    /**
+     * validacion del numero de la tarejta de credito VISA
+     * @return
+     */
     private String validarNumeroTarjeta() {
         String numeroTarjeta = ((EditText)requireActivity().findViewById(R.id.textNumTarjeta)).getText().toString();
         if (numeroTarjeta.isEmpty()) return "Ingrese un número de tarjeta";
@@ -136,6 +147,10 @@ public class FragmentSeleccionFormaPago extends Fragment {
         return "OK";
     }
 
+    /**
+     * validacion de la fecha de vencimiento de la tarjeta de credito
+     * @return
+     */
     private String validarFecha(){
        String fechaCaducidad = ((EditText)requireActivity().findViewById(R.id.textFechaExp)).getText().toString();
        if (fechaCaducidad.isEmpty()) return "Ingrese una fecha de validez";
@@ -164,6 +179,9 @@ public class FragmentSeleccionFormaPago extends Fragment {
         return CVC.length() == 3;
     }
 
+    /**
+     * valida el monto ingresado si es igual o mayor al total de pago del pedido y guarda para el pago del pedido
+     */
     private void validarYGrabarEfectivo(){
        String textPago = ((EditText)requireActivity().findViewById(R.id.editTextAPagar)).getText().toString();
        if(!textPago.isEmpty() && !textPago.equals(".")){
@@ -174,6 +192,9 @@ public class FragmentSeleccionFormaPago extends Fragment {
        else new DialogAlert(requireContext(), "Ingrese el monto con el que va a pagar").show();
     }
 
+    /**
+     * controla el texto de ingreso de numero de tarjeta y el formato del numero de tarjeta
+     */
     private TextWatcher twTarjeta = new TextWatcher() {
         public void afterTextChanged(Editable s) {
 
@@ -189,6 +210,10 @@ public class FragmentSeleccionFormaPago extends Fragment {
         }
     };
 
+
+    /**
+     * controla el texto de ingreso de la fecha de vencimiento de tarjeta y el formato de la fecha
+     */
     private TextWatcher twFecha = new TextWatcher() {
         public void afterTextChanged(Editable s) {
 

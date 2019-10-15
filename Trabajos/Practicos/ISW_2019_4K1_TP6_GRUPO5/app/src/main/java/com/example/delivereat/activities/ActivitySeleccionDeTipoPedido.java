@@ -80,6 +80,12 @@ public class ActivitySeleccionDeTipoPedido extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * pide los permisos de uso del celular: permiso de utilizacion del GPS (RECOMENDADO NO USAR EL GPS)
+     * @param requestCode
+     * @param permissions
+     * @param grantResults
+     */
     @Override
     public void onRequestPermissionsResult(int requestCode,
                                            String[] permissions, int[] grantResults) {
@@ -96,6 +102,9 @@ public class ActivitySeleccionDeTipoPedido extends AppCompatActivity {
 
     }
 
+    /**
+     * comienza el inicio de actividad de pedido lo que sea
+     */
     private void iniciarPedidoDeLoQueSea(){
         Intent intent = new Intent(ActivitySeleccionDeTipoPedido.this, ActivityPedidoLoQueSea.class);
         startActivity(intent);

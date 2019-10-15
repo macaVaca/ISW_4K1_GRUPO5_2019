@@ -88,6 +88,9 @@ public class FragmentNuevoDetalleDeProducto extends Fragment {
         return view;
     }
 
+    /**
+     * agrega el producto creado al pedido actual
+     */
     private View.OnClickListener listenerAgregarProducto = new View.OnClickListener(){
         @Override
         public void onClick(View v) {
@@ -100,6 +103,9 @@ public class FragmentNuevoDetalleDeProducto extends Fragment {
         }
     };
 
+    /**
+     * crea el producto con sus detalles y valida los datos del msimo
+     */
     private DetallePedidoLoQueSea crearDetalle(){
         String nombre;
         float cantidad;
@@ -222,7 +228,9 @@ public class FragmentNuevoDetalleDeProducto extends Fragment {
             ((ActivityPedidoLoQueSea)requireActivity()).setCurrentFragment(ActivityPedidoLoQueSea.FRAGMENT_PEDIDO);
         }
     };
-
+    /**
+     * seleccion de imagen para el producto: opcion galeria de celular y opcion camara del celular
+     */
     private OnSelectedOption osoFoto = new OnSelectedOption() {
         @Override
         public void onYes() {
@@ -239,7 +247,9 @@ public class FragmentNuevoDetalleDeProducto extends Fragment {
             startActivityForResult(cameraIntent, CAMERA_REQUEST_CODE);
         }
     };
-
+    /**
+     * ejecuta el calculo del subtotal luego de modificar el precio y la cantidad unitaria del producto
+     */
     private TextWatcher twSubtotal = new TextWatcher() {
 
         public void afterTextChanged(Editable s) {

@@ -69,11 +69,14 @@ public class ActivityPedidoLoQueSea extends AppCompatActivity {
         });
     }
 
-+
 
+    /**
+     * Permite el flujo de la transaccion, pasando de interaz en interfaz y permitiendo volver a la intefaz anterior
+     */
     public void setCurrentFragment(int codigo) {
         currentFragment = codigo;
         switch (codigo) {
+            //pantalla de seleccion de ubicacion del negocio
             case FRAGMENT_UBICACION_NEGOCIO:
                 getSupportFragmentManager().beginTransaction()
                         /*.setCustomAnimations()*/
@@ -81,6 +84,7 @@ public class ActivityPedidoLoQueSea extends AppCompatActivity {
                         .commit();
                 tvTitulo.setText("Donde buscámos tu pedido");
                 break;
+                //Fragment de validacion de los datos de la ubicacion del negocio
             case FRAGMENT_CONFIRMAR_UBICACION_NEGOCIO:
                 getSupportFragmentManager().beginTransaction()
                         /*.setCustomAnimations()*/
@@ -88,6 +92,7 @@ public class ActivityPedidoLoQueSea extends AppCompatActivity {
                         .commit();
                 tvTitulo.setText("Confirmá los datos del negocio");
                 break;
+                //pantalla de direccion  del cliente
             case FRAGMENT_UBICACION_CLIENTE:
                 getSupportFragmentManager().beginTransaction()
                         /*.setCustomAnimations()*/
@@ -95,6 +100,7 @@ public class ActivityPedidoLoQueSea extends AppCompatActivity {
                         .commit();
                 tvTitulo.setText("¿Dónde llevamos tu pedido?");
                 break;
+                // Fragment de validacion de los datos de la direccion del cliente
             case FRAGMENT_CONFIRMAR_UBICACION_CLIENTE:
                 getSupportFragmentManager().beginTransaction()
                         /*.setCustomAnimations()*/
@@ -102,6 +108,7 @@ public class ActivityPedidoLoQueSea extends AppCompatActivity {
                         .commit();
                 tvTitulo.setText("Confirmá tu ubicación");
                 break;
+                // Pantalla de agregar productos en el carrito
             case FRAGMENT_PEDIDO:
                 getSupportFragmentManager().beginTransaction()
                         /*.setCustomAnimations()*/
@@ -109,6 +116,7 @@ public class ActivityPedidoLoQueSea extends AppCompatActivity {
                         .commit();
                 tvTitulo.setText("Tu pedido");
                 break;
+                //pantalla de datos del producto a agregar al carrito
             case FRAGMENT_NUEVO_DETALLE_PRODUCTO:
                 getSupportFragmentManager().beginTransaction()
                         /*.setCustomAnimations()*/
@@ -116,6 +124,7 @@ public class ActivityPedidoLoQueSea extends AppCompatActivity {
                         .commit();
                 tvTitulo.setText("Nuevo producto");
                 break;
+                // Pantalla de seleccion de forma de pago
             case FRAGMENT_SELECCION_FORMA_PAGO:
                 getSupportFragmentManager().beginTransaction()
                         /*.setCustomAnimations()*/
@@ -123,6 +132,7 @@ public class ActivityPedidoLoQueSea extends AppCompatActivity {
                         .commit();
                 tvTitulo.setText("Seleccionar forma de pago");
                 break;
+                //pantalla de seleccion de horario de envio: "lo antes posible" o "horario programado"
             case FRAGMENT_CUANDO_LO_ENVIAMOS:
                 getSupportFragmentManager().beginTransaction()
                         /*.setCustomAnimations()*/
@@ -139,7 +149,7 @@ public class ActivityPedidoLoQueSea extends AppCompatActivity {
         return locationManager;
     }
 
-    /***
+    /**
      * Define la direccion parcial de entrega que se confirmara en una instancia del fragment de confirmacion de ubicacion
      * @param direccionClienteMapa
      */
@@ -148,16 +158,25 @@ public class ActivityPedidoLoQueSea extends AppCompatActivity {
         setCurrentFragment(FRAGMENT_CONFIRMAR_UBICACION_CLIENTE);
     }
 
+    /**
+     * Define la direccion parcial del comercio que se confirmara en una instancia del fragment de confirmacion de ubicacion
+     */
     public void setDireccionNegocioMapa(Address currentAdress) {
         this.direccionNegocioMapa = currentAdress;
         setCurrentFragment(FRAGMENT_CONFIRMAR_UBICACION_NEGOCIO);
     }
 
+    /**
+     * Define la direccion definitiva de entrega validada
+     */
     public void setDireccionCliente(Ubicacion direccionCliente) {
         this.direccionCliente = direccionCliente;
         setCurrentFragment(FRAGMENT_SELECCION_FORMA_PAGO);
     }
 
+    /**
+     * Define la direccion definitiva del comercio validada
+     */
     public void setDireccionNegocio(Ubicacion ubicacion) {
         this.direccionNegocio = ubicacion;
         setCurrentFragment(FRAGMENT_PEDIDO);
@@ -168,10 +187,15 @@ public class ActivityPedidoLoQueSea extends AppCompatActivity {
         return direccionClienteMapa;
     }
 
+    /**
+     * Elimina un producto del detalle del pedido
+     */
     public void eliminarDetalleDePedido(int index){
         pedido.remove(index);
     }
-
+    /**
+     * Agrega un detalle de pedido al pedido
+     */
     public void insertarDetalleDePedido(DetallePedidoLoQueSea detalle){
         pedido.add(detalle);
     }
@@ -184,6 +208,9 @@ public class ActivityPedidoLoQueSea extends AppCompatActivity {
         return direccionNegocioMapa;
     }
 
+    /**
+     * calcula el gasto total de los detalles del pedido
+     */
     public float getTotalAPagar(){
         float total = 0;
         for (DetallePedidoLoQueSea det : pedido){

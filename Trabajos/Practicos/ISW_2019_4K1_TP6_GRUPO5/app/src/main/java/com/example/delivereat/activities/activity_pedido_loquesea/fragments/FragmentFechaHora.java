@@ -34,6 +34,13 @@ public class FragmentFechaHora extends Fragment {
     boolean horaSeteada = false;
     boolean fechaSeteada = false;
 
+    /**
+     * creacion del View para la pantalla seleccion de horario de entrega: lo antes posible o entrega programada
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -46,7 +53,7 @@ public class FragmentFechaHora extends Fragment {
         buttonHora.setOnClickListener(listenerHora);
         buttonFecha.setOnClickListener(listenerFecha);
 
-        ((RadioGroup)view.findViewById(R.id.radioGroupFecha)).setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        ((RadioGroup) view.findViewById(R.id.radioGroupFecha)).setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (checkedId == R.id.radioButtonYa) seleccion = 1;
@@ -59,16 +66,15 @@ public class FragmentFechaHora extends Fragment {
         view.findViewById(R.id.buttonConfirmarPedido).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if((seleccion == 1) || (horaSeteada && fechaSeteada && Calendar.getInstance().before(calHora))){
-                   //Ok.
+                if ((seleccion == 1) || (horaSeteada && fechaSeteada && Calendar.getInstance().before(calHora))) {
+                    //Ok.
                     new DialogAlert(requireContext(), "Pedido registrado con éxito!", new OnAlertClosed() {
                         @Override
                         public void OnAlertClosed() {
                             requireActivity().finish();
                         }
                     }).show();
-                }
-                else{
+                } else {
                     new DialogAlert(requireContext(), "¡Seleccione fecha y hora válidas!").show();
                 }
             }
@@ -77,18 +83,24 @@ public class FragmentFechaHora extends Fragment {
         return view;
     }
 
+    /**
+     * seleccion y formato de la hora de entrega programada
+     */
     private View.OnClickListener listenerHora = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             //New timepicker
             boolean use24HourClock = DateFormat.is24HourFormat(requireContext());
             TimePickerDialog tpd = new TimePickerDialog(requireActivity(), time, calHora
-                    .get(Calendar.HOUR_OF_DAY), calHora.get(Calendar.MINUTE),use24HourClock);
+                    .get(Calendar.HOUR_OF_DAY), calHora.get(Calendar.MINUTE), use24HourClock);
 
             tpd.show();
         }
     };
 
+    /**
+     * calendario para la seleccion de la fecha de entrega programada
+     */
     private Calendar calendar = Calendar.getInstance();
     private View.OnClickListener listenerFecha = new View.OnClickListener() {
         @Override
